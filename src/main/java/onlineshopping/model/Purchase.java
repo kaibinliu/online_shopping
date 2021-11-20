@@ -5,7 +5,7 @@ import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
-public class purchase {
+public class Purchase {
     public int BId;
     public int GId;
     public String BPhone;
@@ -13,7 +13,19 @@ public class purchase {
     public int PCount;
     public String PAddress;
     public String PState;
-    public purchase(){
+
+    public Purchase(int BId, int GId, String BPhone, Date PDate, int PCount, String PAddress, String PState) {
+        this.BId = BId;
+        this.GId = GId;
+        this.BPhone = BPhone;
+        this.PDate = PDate;
+        this.PCount = PCount;
+        this.PAddress = PAddress;
+        this.PState = PState;
+    }
+
+
+    public Purchase(){
 
     }
     public int getBId() {

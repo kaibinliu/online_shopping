@@ -1,13 +1,21 @@
 package onlineshopping.model;
 
-public class buyer {
+public class Buyer {
     public int BId;
     public String BUsername;
     public String BPassword;
     public String BPhone;
     public String BAddress;
 
-    public buyer() {
+    public Buyer(int BId, String BUsername, String BPassword, String BPhone, String BAddress) {
+        this.BId = BId;
+        this.BUsername = BUsername;
+        this.BPassword = BPassword;
+        this.BPhone = BPhone;
+        this.BAddress = BAddress;
+    }
+
+    public Buyer() {
     }
 
     public int getBId() {
