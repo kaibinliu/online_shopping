@@ -1,6 +1,7 @@
 package onlineshopping.controller.seller;
 
 
+import onlineshopping.model.Seller;
 import onlineshopping.model.sellerDao.SellerRegisterDao;
 
 import javax.servlet.*;
@@ -31,7 +32,9 @@ public class SellerRegisterServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String SUsername=request.getParameter("uname");
         String SPassword=request.getParameter("pwd");
-        Seller seller = new Seller(SUsername,SPassword);
+        Seller seller = new Seller();
+        seller.setSUsername(SUsername);
+        seller.setSPassword(SPassword);
         SellerRegisterDao sellerRD = new SellerRegisterDao();
         boolean a = sellerRD.register(seller);
         if(a) {
