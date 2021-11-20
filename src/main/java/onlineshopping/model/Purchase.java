@@ -6,13 +6,13 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
 public class Purchase {
-    public int BId;
-    public int GId;
-    public String BPhone;
-    public Date PDate;
-    public int PCount;
-    public String PAddress;
-    public String PState;
+    private int BId;
+    private int GId;
+    private String BPhone;
+    private Date PDate;
+    private int PCount;
+    private String PAddress;
+    private String PState;
 
     public Purchase(int BId, int GId, String BPhone, Date PDate, int PCount, String PAddress, String PState) {
         this.BId = BId;

@@ -1,14 +1,14 @@
 package onlineshopping.model;
 
 public class Goods {
-    public int GId;
-    public String GName;
-    public String GCategoryone;
-    public String GCategorytwo;
-    public double GPrice;
-    public String GPicture;
-    public String GDescribe;
-    public int GStock;
+    private int GId;
+    private String GName;
+    private String GCategoryone;
+    private String GCategorytwo;
+    private double GPrice;
+    private String GPicture;
+    private String GDescribe;
+    private int GStock;
 
     public Goods(int GId, String GName, String GCategoryone, String GCategorytwo, double GPrice, String GPicture, String GDescribe, int GStock) {
         this.GId = GId;
