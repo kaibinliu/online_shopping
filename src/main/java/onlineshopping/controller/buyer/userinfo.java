@@ -1,6 +1,5 @@
 package onlineshopping.controller.buyer;
 
-import onlineshopping.model.Purchaser;
 import onlineshopping.model.buyerDao.userdao;
 
 import javax.servlet.*;

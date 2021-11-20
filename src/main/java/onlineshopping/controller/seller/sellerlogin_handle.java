@@ -1,6 +1,5 @@
 package onlineshopping.controller.seller;
 
-import onlineshopping.model.Seller;
 import onlineshopping.model.sellerDao.SellerLoginDao;
 
 import javax.servlet.*;

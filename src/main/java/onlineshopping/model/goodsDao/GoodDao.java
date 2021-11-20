@@ -1,7 +1,5 @@
 package onlineshopping.model.goodsDao;
 
-import onlineshopping.model.Good;
-
 import java.sql.*;
 import java.util.ArrayList;
 

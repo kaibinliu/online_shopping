@@ -1,6 +1,5 @@
 package onlineshopping.controller.goods;
 
-import onlineshopping.model.Good;
 import onlineshopping.model.goodsDao.GoodDao;
 
 import javax.servlet.*;

@@ -1,8 +1,5 @@
 package onlineshopping.model.goodsDao;
 
-import onlineshopping.model.Good1;
-import onlineshopping.model.Repository;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
