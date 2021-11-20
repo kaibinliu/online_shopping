@@ -1,6 +1,9 @@
 package onlineshopping.model;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 
 public class purchase {
     public int BId;
@@ -37,12 +40,23 @@ public class purchase {
         this.BPhone = BPhone;
     }
 
-    public Date getPDate() {
-        return PDate;
+    public String getPDate() {
+        String value = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        value = dateFormat.format(PDate);
+        return value;
     }
 
-    public void setPDate(Date PDate) {
-        this.PDate = PDate;
+    public void setPDate(String PDate) {
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        ParsePosition pos = new ParsePosition(0);//�ӵ�һ���ַ���ʼ����
+        try {
+            this.PDate = (Date) f.parse(PDate,pos);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public int getPCount() {
