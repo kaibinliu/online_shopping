@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>注册成功！</h1>
-<a href="sellerlogin.jsp">卖家登录页面</a>
+<a href="SellerLogin.jsp">卖家登录页面</a>
 <p>您将在5秒内被重定向到卖家登录页面</p>
 <p>如果超过5秒后您仍然看到本消息，请单击上面的链接</p>
 </body>

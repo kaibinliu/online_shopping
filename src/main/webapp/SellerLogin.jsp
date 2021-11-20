@@ -31,7 +31,7 @@
     <div class="haomaTitle" id="hmtitle">
         登录账号
     </div>
-    <form action="sellerlogin_handle" mothod="post">
+    <form action="SellerLoginServlet" mothod="post">
         <table>
             <tr>
                 <td class="tip">用户名：</td><td> <input type="text" name="uname"/></td>
