@@ -44,6 +44,6 @@
             </tr>
         </table>
     </form>
-    <a href="sellerlogin.jsp">商家登录</a>
+    <a href="SellerLogin.jsp">商家登录</a>
 </body>
 </html>

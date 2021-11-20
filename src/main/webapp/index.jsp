@@ -15,7 +15,7 @@
         <input style="width: 2cm; height: 1cm;" type="submit" value="买家">
     </form>
     <br><br><br><br><br>
-    <form action="sellerlogin.jsp">
+    <form action="SellerLogin.jsp">
         <input style="width: 2cm; height: 1cm;"  type="submit" value="卖家">
     </form>
 </div>

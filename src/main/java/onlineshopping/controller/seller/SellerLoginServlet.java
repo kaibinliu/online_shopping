@@ -1,5 +1,6 @@
 package onlineshopping.controller.seller;
 
+import onlineshopping.model.Seller;
 import onlineshopping.model.sellerDao.SellerLoginDao;
 
 import javax.servlet.*;
@@ -7,8 +8,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "sellerlogin_handle", value = "/sellerlogin_handle")
-public class sellerlogin_handle extends HttpServlet {
+@WebServlet(name = "SellerLoginServlet", value = "/SellerLoginServlet")
+public class SellerLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -17,7 +18,7 @@ public class sellerlogin_handle extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sellerlogin_handle() {
+    public SellerLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +28,9 @@ public class sellerlogin_handle extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String uname = request.getParameter("uname");
         String pwd = request.getParameter("pwd");
-        Seller seller = new Seller(uname,pwd);
+        Seller seller = new Seller();
+        seller.setSUsername(uname);
+        seller.setSPassword(pwd);
         SellerLoginDao sellerLD = new SellerLoginDao();
         boolean a = sellerLD.Login(seller);
         if(a) {
@@ -36,7 +39,7 @@ public class sellerlogin_handle extends HttpServlet {
             RequestDispatcher dispatcher=request.getRequestDispatcher("Show.jsp");
             dispatcher.forward(request,response);
         }else {
-            RequestDispatcher dispatcher=request.getRequestDispatcher("sellerlogin_fail.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("SellerLogin_fail.jsp");
             dispatcher.forward(request,response);
         }
 
