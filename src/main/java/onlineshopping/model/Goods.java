@@ -1,6 +1,6 @@
 package onlineshopping.model;
 
-public class goods {
+public class Goods {
     public int GId;
     public String GName;
     public String GCategoryone;
@@ -10,7 +10,18 @@ public class goods {
     public String GDescribe;
     public int GStock;
 
-    public goods() {
+    public Goods() {
+    }
+
+    public Goods(int GId, String GName, String GCategoryone, String GCategorytwo, double GPrice, String GPicture, String GDescribe, int GStock) {
+        this.GId = GId;
+        this.GName = GName;
+        this.GCategoryone = GCategoryone;
+        this.GCategorytwo = GCategorytwo;
+        this.GPrice = GPrice;
+        this.GPicture = GPicture;
+        this.GDescribe = GDescribe;
+        this.GStock = GStock;
     }
 
     public int getGId() {

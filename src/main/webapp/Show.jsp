@@ -1,6 +1,7 @@
 <%@page import="onlineshopping.model.Seller"%>
 <%@page import="onlineshopping.model.goodsDao.GoodDao"%>
-<%@page import="onlineshopping.model.Good"%>
+<%@page import="onlineshopping.model.Goods"%>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,6 +32,18 @@
             text-align: center;
         }
     </style>
+    <script language="javascript">
+        function stockChange(id){
+            var num= prompt("修改库存");
+            if(num)
+                if (parseInt(num)>=0)
+                    window.location.href="ChangeStockServlet?id="+id+"&num="+num;
+                else
+                    alert("库存修改失败！库存不可设置为负数.")
+            else
+                window.location.href="Show.jsp";
+        }
+    </script>
 </head>
 <body>
 <%
@@ -39,75 +52,49 @@
 		response.sendRedirect("sellerlogin.jsp");
 	}else{
 %>
-<p style="text-align:right;"><a href="changepassword.jsp">修改密码</a>
-<a href="quit.jsp">退出登录</a></p>
+<p style="text-align:right;">
+    <a href="Release.jsp">发布商品</a>
+    <a href="ShowBuyerInfo.jsp">查看注册用户信息</a>
+    <a href="SoldOut.jsp">查看历史商品</a>
+    <a href="changepassword.jsp">修改密码</a>
+    <a href="quit.jsp">退出登录</a></p>
 <hr/>
 
     <h1 align="center">商品信息管理</h1><!--商家管理商品信息-->
-<% 
-request.setCharacterEncoding("utf-8");
-	Good good=new Good();
-	GoodDao gd=new GoodDao();
-	good=gd.showGood();
-	if(good!=null){
-	String[] ima=good.getG_img().split(";");
+<%
+    request.setCharacterEncoding("utf-8");
+    GoodDao gd=new GoodDao();
+    ArrayList<Goods> gl=gd.showGoods();
+    if(gl.isEmpty()==false){
+        String[] ima;
+        for(Goods good:gl) {
+            ima=good.getGPicture().split(";");
 %>
-    <div align="center" id="hmtitle" >
-        商品信息
-    </div>
     
 		<table align="center">
             <tr>
-                <td class="tip">商品名称：</td><td> <%=good.getG_name() %></td>
+                <td class="tip">商品名称：</td><td> <%=good.getGName() %></td>
             </tr>
             <tr>
                 <td class="tip">商品图片：</td>
-                <td> <% if(good.getG_img().length()!=0){
+                <td> <% if(good.getGPicture().length()!=0){
 						for(String i:ima){%>
 							<img src=<%=i%> height="200" width="400">
-						<%} }%></td>
+						<%break;} }%></td>
             </tr>
             <tr>
-                <td class="tip">商品价格：</td><td width=400> <%=good.getG_price() %></td>
-            </tr>
-            <tr>
-                <td class="tip">商品简介：</td><td width=400> <%=good.getG_des() %></td>
+                <td class="tip">商品价格：</td><td width=400> <%=good.getGPrice() %></td>
             </tr>
 			<tr>
-                <td class="tip">商品状态：</td><td width=400> <%=good.getG_state()%>
-                <%if(good.getG_state().equals("销售中")||good.getG_state().equals("冻结中")){ %>
-                &nbsp;&nbsp;&nbsp;<a href="Purchase.jsp?id=<%=good.getG_id()%>&name=<%=good.getG_name()%>">查看意向购买人信息</a>
-                <%}%></td>
+                <td class="tip">商品库存：</td><td width=400> <%=good.getGStock()%>
+                &nbsp<a href="Purchase.jsp?id=<%=good.getGId()%>&name=<%=good.getGName()%>">查看订单</a></td>
             </tr>
             <tr>
-            <%if(good.getG_state().equals("销售中")){ %>
-                <td class="tip">
-                	<form action="Freeze?id=<%=good.getG_id()%>" method="POST" >
-                		<td colspan="2" class="btnSubmit"><input type="submit" value="冻结"/></td>
-                	</form>
-                </td>
-                <%}else if(good.getG_state().equals("冻结中")){%>
-                </tr>
-                <tr>
-                </tr>
-                <td class="tip">
-                	<form action="SuccessDeal?id=<%=good.getG_id()%>" method="POST" >
-                		<input type="submit" value="交易成功"/>
-                	</form>
-                </td>
-                <td class="tip">
-                	<form action="FailedDeal?id=<%=good.getG_id()%>" method="POST" >
-                		<input type="submit" value="交易失败"/>
-                	</form>
-                </td>
-                <%} %>
+                <td class="tip">操作：</td><td width=400> <button onclick="stockChange(<%=good.getGId()%>)">修改库存</button> </td>
             </tr>
-        </table><br/><br/>
-        <a href="SoldOut.jsp">查看历史商品</a>
-<%}else {%>
-<h1>商品已售空！</h1><br/>
-<a href="Release.jsp">发布商品</a><br/>
-<a href="SoldOut.jsp">查看历史商品</a>
+        </table><br/><br/><hr/>
+<%}}else {%>
+<h1>商品已售空！</h1>
 <%}} %>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package onlineshopping.controller.goods;
 
 import onlineshopping.model.goodsDao.GoodDao;
+import onlineshopping.model.purchaseDao.PurchaseDao;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,15 +23,16 @@ public class FailedDeal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        int id=Integer.parseInt(request.getParameter("id"));
-        GoodDao gd=new GoodDao();
+        int GId=Integer.parseInt(request.getParameter("GId"));
+        int BId=Integer.parseInt(request.getParameter("BId"));
+        PurchaseDao pd=new PurchaseDao();
         try {
-            gd.stateChange("销售中", id);;
+            pd.stateChange("交易失败",BId,GId);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        response.sendRedirect("Show.jsp");
+        response.sendRedirect("Purchase.jsp?id="+GId);
     }
 
     @Override
