@@ -1,12 +1,14 @@
 package onlineshopping.model;
 
 public class Seller {
+
     public int SId;
     public String SUsername;
     public String SPassword;
     public Seller(){
 
     }
+
 
     public Seller(int SId, String SUsername, String SPassword) {
         this.SId = SId;

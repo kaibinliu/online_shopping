@@ -9,6 +9,6 @@
 <body>
 登录失败！<br>
 用户名或密码错误<br>
-<a href="sellerlogin.jsp">卖家登录</a>
+<a href="SellerLogin.jsp">卖家登录</a>
 </body>
 </html>

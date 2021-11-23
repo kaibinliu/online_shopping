@@ -1,14 +1,17 @@
-package onlineshopping.controller.seller;
+package onlineshopping.controller.buyer;
 
-import onlineshopping.model.sellerDao.SellerLoginDao;
+import onlineshopping.model.Buyer;
+import onlineshopping.model.buyerDao.BuyerLoginDao;
 
+import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "sellerlogin_handle", value = "/sellerlogin_handle")
-public class sellerlogin_handle extends HttpServlet {
+
+@WebServlet(name = "BuyerLoginServlet", value = "/BuyerLoginServlet")
+public class BuyerLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
@@ -17,7 +20,7 @@ public class sellerlogin_handle extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sellerlogin_handle() {
+    public BuyerLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,18 +28,20 @@ public class sellerlogin_handle extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         request.setCharacterEncoding("utf-8");
-        String uname = request.getParameter("uname");
-        String pwd = request.getParameter("pwd");
-        Seller seller = new Seller(uname,pwd);
-        SellerLoginDao sellerLD = new SellerLoginDao();
-        boolean a = sellerLD.Login(seller);
+        String BUsername = request.getParameter("BUsername");
+        String BPassword = request.getParameter("BPassword");
+        Buyer buyer = new Buyer();
+        buyer.setBUsername(BUsername);
+        buyer.setBPassword(BPassword);
+        BuyerLoginDao buyerLD = new BuyerLoginDao();
+        boolean a = buyerLD.Login(buyer);
         if(a) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("seller", seller);
+            session.setAttribute("seller", buyer);
             RequestDispatcher dispatcher=request.getRequestDispatcher("Show.jsp");
             dispatcher.forward(request,response);
         }else {
-            RequestDispatcher dispatcher=request.getRequestDispatcher("sellerlogin_fail.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("BuyerLogin_fail.jsp");
             dispatcher.forward(request,response);
         }
 

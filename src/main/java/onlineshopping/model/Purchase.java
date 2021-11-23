@@ -16,7 +16,6 @@ public class Purchase {
     public String PAddress;
     public String PState;
     public Purchase(){
-
     }
 
     public Purchase(int BId, int GId, String GName, String BUsername, String BPhone, Date PDate, int PCount, String PAddress, String PState) {
@@ -24,12 +23,6 @@ public class Purchase {
         this.GId = GId;
         this.GName = GName;
         this.BUsername = BUsername;
-        this.BPhone = BPhone;
-        this.PDate = PDate;
-        this.PCount = PCount;
-        this.PAddress = PAddress;
-        this.PState = PState;
-    }
 
     public String getGName() {
         return GName;

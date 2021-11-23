@@ -9,7 +9,7 @@ public class Buyer {
 
     public Buyer() {
     }
-
+  
     public Buyer(int BId, String BUsername, String BPassword, String BPhone, String BAddress) {
         this.BId = BId;
         this.BUsername = BUsername;

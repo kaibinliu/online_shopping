@@ -13,6 +13,7 @@ public class Goods {
     public Goods() {
     }
 
+
     public Goods(int GId, String GName, String GCategoryone, String GCategorytwo, double GPrice, String GPicture, String GDescribe, int GStock) {
         this.GId = GId;
         this.GName = GName;
