@@ -1,5 +1,6 @@
 package onlineshopping.controller.buyer;
 
+import onlineshopping.model.Buyer;
 import onlineshopping.model.buyerDao.userdao;
 
 import javax.servlet.*;
@@ -13,12 +14,12 @@ public class userinfo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         String id=request.getParameter("id");
-        Purchaser u=new Purchaser();
+        Buyer u=new Buyer();
         String name=request.getParameter("buyername");
         String phone=request.getParameter("buyerphone");
-        u.setName(name);
-        u.setPhone(phone);
-        u.setId(id);
+        u.setBUsername(name);
+        u.setBPhone(phone);
+        u.setBId(Integer.parseInt(id));
         userdao.login(u);
         if(name!=null&&phone!=null)
         {

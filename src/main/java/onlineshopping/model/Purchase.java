@@ -6,15 +6,16 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
 public class Purchase {
-    public int BId=0;
-    public int GId;
-    public String GName;
-    public String BUsername;
-    public String BPhone;
-    public Date PDate;
-    public int PCount;
-    public String PAddress;
-    public String PState;
+   private int BId=0;
+    private int GId;
+    private String GName;
+    private String BUsername;
+    private String BPhone;
+    private Date PDate;
+    private int PCount;
+    private String PAddress;
+    private String PState;
+
     public Purchase(){
     }
 
@@ -23,6 +24,12 @@ public class Purchase {
         this.GId = GId;
         this.GName = GName;
         this.BUsername = BUsername;
+        this.BPhone = BPhone;
+        this.PDate = PDate;
+        this.PCount = PCount;
+        this.PAddress = PAddress;
+        this.PState = PState;
+    }
 
     public String getGName() {
         return GName;

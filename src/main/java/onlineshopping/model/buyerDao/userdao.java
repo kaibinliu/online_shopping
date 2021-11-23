@@ -17,10 +17,10 @@ public class userdao {
 			ResultSet rs=null;
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Class.forName("com.mysql.jdbc.Driver");
-			String jdbc="jdbc:mysql://127.0.0.1:3306/onlineshopping?characterEncoding=UTF-8&serverTimezone=UTC";
-			conn=DriverManager.getConnection(jdbc, "root", "root");
+			String jdbc="jdbc:mysql://127.0.0.1:3306/onlinesp?characterEncoding=UTF-8&serverTimezone=UTC";
+			conn=DriverManager.getConnection(jdbc, "root", "001124");
 			state =conn.createStatement();
-			String sql="insert into  purchase (PDate,GNo,Username,Phone) values ('"+df.format(new Date())+"',"+u.getId()+",'"+u.getName()+"','"+u.getPhone()+"')";
+			String sql="insert into  purchase (PDate,GNo,Username,Phone) values ('"+df.format(new Date())+"',"+u.getBId()+",'"+u.getBUsername()+"','"+u.getBPhone()+"')";
 			state.executeUpdate(sql);
 			conn.close();
 		}catch (Exception e) {
@@ -39,8 +39,8 @@ public class userdao {
 		ArrayList<Buyer> bl=new ArrayList<Buyer>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String jdbc="jdbc:mysql://127.0.0.1:3306/shop?characterEncoding=UTF-8&serverTimezone=UTC";
-			conn=DriverManager.getConnection(jdbc, "root", "root");
+			String jdbc="jdbc:mysql://127.0.0.1:3306/onlinesp?characterEncoding=UTF-8&serverTimezone=UTC";
+			conn=DriverManager.getConnection(jdbc, "root", "001124");
 			state =conn.createStatement();
 			String sql="select BId,BUsername,BPhone,BAddress from buyer";
 			rs=state.executeQuery(sql);

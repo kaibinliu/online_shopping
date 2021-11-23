@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Refresh" content="5;url=sellerlogin.jsp"/>
+<meta http-equiv="Refresh" content="5;url=SellerLogin.jsp"/>
 <title>卖家注册成功页面</title>
 </head>
 <body>
