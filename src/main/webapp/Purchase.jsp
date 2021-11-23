@@ -31,6 +31,14 @@
             text-align: center;
         }
     </style>
+    <script language="javascript">
+        function success(GId,BId,PCount){
+            window.location.href="SuccessDeal?GId="+GId+"&BId="+BId+"&PCount="+PCount;
+        }
+        function fail(GId,BId){
+            window.location.href="FailedDeal?GId="+GId+"&BId="+BId;
+        }
+    </script>
 </head>
 <body>
 <%
@@ -39,15 +47,13 @@
 		response.sendRedirect("sellerlogin.jsp");
 	}else{
 %>
-    <h1>意向购买人信息</h1><!--已出售商品信息-->
+    <h1>订单信息</h1><!--已出售商品信息-->
     <div class="haomaTitle" id="hmtitle">
-        购买人信息
+        订单信息
         <%
         int no=Integer.parseInt(request.getParameter("id"));
-        String name=request.getParameter("name");
-        if(no==0||name==null)
+        if(no==0)
         	response.sendRedirect("Show.jsp");
-       	System.out.println(no+name);
         PurchaseDao pd=new PurchaseDao();
 		ArrayList<Purchase> pl=pd.read(no);
 		if(pl.isEmpty()==false){
@@ -55,16 +61,31 @@
 		%>
 		<table>
             <tr>
-                <td class="tip">商品名称：</td><td> <%=name%></td>
+                <td class="tip">客户：</td><td> <%=p.getBUsername() %></td>
             </tr>
             <tr>
-                <td class="tip">意向购买人：</td><td> <%=p.getUsername() %></td>
+                <td class="tip">商品ID：</td><td> <%=p.getGId()%></td>
             </tr>
             <tr>
-                <td class="tip">电话号码：</td><td> <%=p.getPhone() %></td>
+                <td class="tip">商品名称：</td><td> <%=p.getGName()%></td>
             </tr>
             <tr>
-                <td class="tip">日期：</td><td> <%=p.getPDate() %></td>
+                <td class="tip">购买数量：</td><td> <%=p.getPCount() %></td>
+            </tr>
+            <tr>
+                <td class="tip">交易地址：</td><td> <%=p.getPAddress() %></td>
+            </tr>
+            <tr>
+                <td class="tip">电话号码：</td><td> <%=p.getBPhone() %></td>
+            </tr>
+            <tr>
+                <td class="tip">下单日期：</td><td> <%=p.getPDate() %></td>
+            </tr>
+            <tr>
+                <td class="tip">交易地址：</td><td> <%=p.getPAddress() %></td>
+            </tr>
+            <tr>
+                <td class="tip">操作：</td><td><button onclick="success(<%=p.getGId()%>,<%=p.getBId()%>,<%=p.getPCount()%>)">交易成功</button></td><td><button onclick="fail(<%=p.getGId()%>,<%=p.getBId()%>)">交易失败</button></td>
             </tr>
         </table><br/><br/><%} %>
         <a href="Show.jsp">返回</a><br/>

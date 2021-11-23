@@ -8,14 +8,14 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "Freeze", value = "/Freeze")
-public class Freeze extends HttpServlet {
+@WebServlet(name = "ChangeStockServlet", value = "/ChangeStockServlet")
+public class ChangeStockServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Freeze() {
+    public ChangeStockServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -23,9 +23,10 @@ public class Freeze extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         int id=Integer.parseInt(request.getParameter("id"));
+        int num=Integer.parseInt(request.getParameter("num"));
         GoodDao gd=new GoodDao();
         try {
-            gd.stateChange("冻结中", id);;
+            gd.changeStock(id, num);;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

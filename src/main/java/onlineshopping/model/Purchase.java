@@ -6,28 +6,40 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
 public class Purchase {
-    private int BId;
-    private int GId;
-    private String BPhone;
-    private Date PDate;
-    private int PCount;
-    private String PAddress;
-    private String PState;
+    public int BId=0;
+    public int GId;
+    public String GName;
+    public String BUsername;
+    public String BPhone;
+    public Date PDate;
+    public int PCount;
+    public String PAddress;
+    public String PState;
+    public Purchase(){
+    }
 
-    public Purchase(int BId, int GId, String BPhone, Date PDate, int PCount, String PAddress, String PState) {
+    public Purchase(int BId, int GId, String GName, String BUsername, String BPhone, Date PDate, int PCount, String PAddress, String PState) {
         this.BId = BId;
         this.GId = GId;
-        this.BPhone = BPhone;
-        this.PDate = PDate;
-        this.PCount = PCount;
-        this.PAddress = PAddress;
-        this.PState = PState;
+        this.GName = GName;
+        this.BUsername = BUsername;
+
+    public String getGName() {
+        return GName;
     }
 
-
-    public Purchase(){
-
+    public void setGName(String GName) {
+        this.GName = GName;
     }
+
+    public String getBUsername() {
+        return BUsername;
+    }
+
+    public void setBUsername(String BUsername) {
+        this.BUsername = BUsername;
+    }
+
     public int getBId() {
         return BId;
     }

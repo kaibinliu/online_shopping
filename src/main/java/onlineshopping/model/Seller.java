@@ -1,18 +1,19 @@
 package onlineshopping.model;
 
 public class Seller {
-    private int SId;
-    private String SUsername;
-    private String SPassword;
+
+    public int SId;
+    public String SUsername;
+    public String SPassword;
+    public Seller(){
+
+    }
+
 
     public Seller(int SId, String SUsername, String SPassword) {
         this.SId = SId;
         this.SUsername = SUsername;
         this.SPassword = SPassword;
-    }
-
-    public Seller(){
-
     }
 
     public int getSId() {

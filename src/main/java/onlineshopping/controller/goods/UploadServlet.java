@@ -1,5 +1,6 @@
 package onlineshopping.controller.goods;
 
+import onlineshopping.model.Goods;
 import onlineshopping.model.goodsDao.GoodDao;
 
 import javax.servlet.*;
@@ -10,16 +11,16 @@ import java.util.Collection;
 import java.util.UUID;
 
 @WebServlet(name = "UploadServlet", value = "/UploadServlet")
-@MultipartConfig(location = "E:\\IDEA2018\\IDEAworkplace2\\onlineshopping\\src\\main\\webapp\\img")
+@MultipartConfig(location = "C:\\360极速浏览器下载\\online_shopping\\src\\main\\webapp\\img")
 public class UploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Ϊ������������
         String ima_add="";
-        Good good=new Good();
+        Goods good=new Goods();
         request.setCharacterEncoding("utf-8");
-        String basePath = "E:\\IDEA2018\\IDEAworkplace2\\onlineshopping\\src\\main\\webapp\\img";
+        String basePath = "C:\\360极速浏览器下载\\online_shopping\\src\\main\\webapp\\img";
         // ��ȡ�����ϴ��ļ���Ϣ����д�������
         Collection<Part> parts = request.getParts();
         for (Part part : parts) {
@@ -39,10 +40,13 @@ public class UploadServlet extends HttpServlet {
             }
         }
         try {
-            good.setG_name(request.getParameter("sname"));
-            good.setG_des(request.getParameter("sintruction"));
-            good.setG_img(ima_add);
-            good.setG_price(Double.parseDouble(request.getParameter("sprice")));
+            good.setGName(request.getParameter("sname"));
+            good.setGDescribe(request.getParameter("sintruction"));
+            good.setGPicture(ima_add);
+            good.setGCategoryone(request.getParameter("categoryone"));
+            good.setGCategorytwo(request.getParameter("categorytwo"));
+            good.setGStock(Integer.parseInt(request.getParameter("stock")));
+            good.setGPrice(Double.parseDouble(request.getParameter("sprice")));
             GoodDao gd=new GoodDao();
             gd.release(good);
         } catch (Exception e) {
