@@ -1,6 +1,7 @@
 package onlineshopping.controller.buyer;
 
-import onlineshopping.model.Buyer;
+import onlineshopping.model.Purchaser;
+import onlineshopping.model.buyerDao.pddao;
 import onlineshopping.model.buyerDao.userdao;
 
 import javax.servlet.*;
@@ -14,20 +15,28 @@ public class userinfo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         String id=request.getParameter("id");
-        Buyer u=new Buyer();
+        Purchaser u=new Purchaser();
         String name=request.getParameter("buyername");
         String phone=request.getParameter("buyerphone");
-        u.setBUsername(name);
-        u.setBPhone(phone);
-        u.setBId(Integer.parseInt(id));
-        userdao.login(u);
-        if(name!=null&&phone!=null)
+        String address=request.getParameter("location");
+        String count=request.getParameter("purchasequantity");
+        u.setName(name);
+        u.setPhone(phone);
+        u.setId(id);
+        u.setAddress(address);
+        u.setCount(count);
+        if(name!=null&&phone!=null&&address!=null&&pddao.pandaun(u)==0)
         {
+            userdao.login(u);
             response.sendRedirect("success.jsp");
         }
-        else {
+        else if(name==null||phone==null||address==null||count==null){
             response.sendRedirect("fail.jsp");
         }
+        else if(pddao.pandaun(u)==1){
+            response.sendRedirect("account_wrong.jsp");
+        }
+
     }
 
     @Override
