@@ -40,7 +40,7 @@ public class HandlePassword extends HttpServlet {
 
         //传入参数
         if(!password.equals(again_password)){
-            RequestDispatcher dispatcher=request.getRequestDispatcher("change_fail.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("jsp/seller/change_fail.jsp");
             dispatcher.forward(request,response);
             return;
         }
@@ -49,13 +49,13 @@ public class HandlePassword extends HttpServlet {
 
         if(password.equals(again_password)){
             boolean a = hp.change(set);
-            RequestDispatcher dispatcher=request.getRequestDispatcher("change_sucess.jsp");//转发
+            RequestDispatcher dispatcher=request.getRequestDispatcher("jsp/seller/change_sucess.jsp");//转发
             dispatcher.forward(request,response);
         }
 
         else{
 
-            RequestDispatcher dispatcher=request.getRequestDispatcher("change_fail.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("jsp/seller/change_fail.jsp");
             dispatcher.forward(request,response);
 
             return;

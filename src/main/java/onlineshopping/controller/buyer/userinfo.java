@@ -28,13 +28,13 @@ public class userinfo extends HttpServlet {
         if(name!=null&&phone!=null&&address!=null&&pddao.pandaun(u)==0)
         {
             userdao.login(u);
-            response.sendRedirect("success.jsp");
+            response.sendRedirect("jsp/purchase/success.jsp");
         }
         else if(name==null||phone==null||address==null||count==null){
-            response.sendRedirect("fail.jsp");
+            response.sendRedirect("jsp/purchase/fail.jsp");
         }
         else if(pddao.pandaun(u)==1){
-            response.sendRedirect("account_wrong.jsp");
+            response.sendRedirect("jsp/purchase/account_wrong.jsp");
         }
 
     }

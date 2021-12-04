@@ -3,6 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="onlineshopping.model.Repository"%>
 <%@page import="onlineshopping.model.Goods"%>
+<%@ page import="onlineshopping.model.Buyer" %>
 <%@ page language="java"  contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,11 +13,27 @@
     <title>Insert title here</title>
 </head>
 <body>
-<p>
-    <a href="BuyerLogin.jsp">登录</a>
-    <a href="BuyerRegister.jsp">注册</a>
+<%
+    Buyer buyer = (Buyer)session.getAttribute("buyer");
+    if(null==buyer){
+%>
+<p style="text-align:right;">
+    <a href="../buyer/BuyerLogin.jsp">登录</a>
+    <a href="../buyer/BuyerRegister.jsp">注册</a>
 </p>
-<form action="Sousuo" method="post">
+<%
+    }else{
+%>
+<p style="text-align:right;">
+    <a href="">查看个人购买记录</a>
+    <a href="">修改密码</a>
+    <a href="">退出登录</a>
+</p>
+<%
+    }
+%>
+
+<form action="../../Sousuo" method="post">
     <input type="text" name="ss">
     <input type="submit" value="搜索">
 </form>
@@ -38,7 +55,7 @@
         详细信息:<p> <%=g1.getGDescribe() %></p>
         价格:<%=g1.getGPrice() %>
         库存:<%=g1.getGStock() %>
-        <form action="userinformation.jsp" method="post">
+        <form action="../buyer/userinformation.jsp" method="post">
             <input style="float: right;"type="submit" value="购买"  >
             <input type="hidden" name="id" value=<%=g1.getGId()%>>
         </form>

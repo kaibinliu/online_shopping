@@ -43,11 +43,9 @@ public class BuyerRegisterServlet extends HttpServlet {
         BuyerRegisterDao buyerRD = new BuyerRegisterDao();
         boolean a = buyerRD.register(buyer);
         if(a) {
-            RequestDispatcher dispatcher=request.getRequestDispatcher("BuyerRegister_success.jsp");
-            dispatcher.forward(request,response);
+            response.sendRedirect("jsp/buyer/BuyerRegister_success.jsp");
         }else {
-            RequestDispatcher dispatcher=request.getRequestDispatcher("BuyerRegister_fail.jsp");
-            dispatcher.forward(request,response);
+            response.sendRedirect("jsp/buyer/BuyerRegister_fail.jsp");
         }
     }
 

@@ -15,7 +15,7 @@
     	setInterval('jump()',1000);
     	function jump(){
     		if(t==0){
-    			location="sellerlogin.jsp";
+    			location="SellerLogin.jsp";
     		}
     		document.getElementById('show').innerHTML=""+t+"秒后跳转到登陆页面";
     		t--;

@@ -50,10 +50,10 @@ public class UploadServlet extends HttpServlet {
             GoodDao gd=new GoodDao();
             gd.release(good);
         } catch (Exception e) {
-            request.getRequestDispatcher("Release.jsp").forward(request, response);
+            request.getRequestDispatcher("jsp/goods/Release.jsp").forward(request, response);
             e.printStackTrace();
         }
-        response.sendRedirect("Show.jsp");
+        response.sendRedirect("jsp/goods/Show.jsp");
     }
 
     @Override

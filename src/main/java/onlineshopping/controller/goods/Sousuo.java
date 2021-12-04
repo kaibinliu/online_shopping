@@ -18,7 +18,7 @@ public class Sousuo extends HttpServlet {
         Repository repo= SousuoDao.sousuo(ss);
         request.setAttribute("repo",repo);
         request.getSession(true).setAttribute("repo",repo);
-        response.sendRedirect("goodlist_sousuo.jsp");
+        response.sendRedirect("jsp/goods/goodlist_sousuo.jsp");
     }
 
     @Override

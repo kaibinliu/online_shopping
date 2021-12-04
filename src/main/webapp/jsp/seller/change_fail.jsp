@@ -28,7 +28,7 @@ margin-left:-100px;
 </style>
 <BODY style="background:url(image/修改密码.jpg) ;background-size:cover; ">
 <div  id='tt'>密码修改失败！</div> <br><br>
-<a href=changepassword.jsp>返回</a>
+<a href=src/main/webapp/jsp/seller/changepassword.jsp>返回</a>
 <body >
 </body>
 </html>

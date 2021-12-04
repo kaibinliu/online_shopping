@@ -57,7 +57,7 @@
 <%
 	Seller seller=(Seller)session.getAttribute("seller");
 	if(null==seller){
-		response.sendRedirect("sellerlogin.jsp");
+		response.sendRedirect("../seller/SellerLogin.jsp");
 	}else{
 %>
 <%GoodDao gd=new GoodDao();
@@ -67,7 +67,7 @@
         商品信息
     </div>
 
-	<form name="form" action="UploadServlet" method="POST" enctype="multipart/form-data">
+	<form name="form" action="../../UploadServlet" method="POST" enctype="multipart/form-data">
         <table>
             <tr>
                 <td class="tip">商品名称：</td><td> <input type="text" name="sname"/></td>

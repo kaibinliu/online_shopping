@@ -40,7 +40,7 @@
 <%
     Seller seller=(Seller)session.getAttribute("seller");
     if(null==seller){
-        response.sendRedirect("sellerlogin.jsp");
+        response.sendRedirect("../seller/SellerLogin.jsp");
     }else{
 %>
 <h1>注册客户购买历史</h1><!--注册客户信息-->
@@ -49,7 +49,7 @@
         <%
         int id=Integer.parseInt(request.getParameter("id"));
         if(id==0)
-        	response.sendRedirect("Show.jsp");
+        	response.sendRedirect("../goods/Show.jsp");
         PurchaseDao pd=new PurchaseDao();
 		ArrayList<Purchase> pl=pd.readHistory(id);
 		if(pl.isEmpty()==false){
