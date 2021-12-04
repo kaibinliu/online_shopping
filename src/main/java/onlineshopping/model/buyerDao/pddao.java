@@ -1,13 +1,11 @@
 package onlineshopping.model.buyerDao;
 
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Purchaser;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 
 public class pddao {
     public static int pandaun(Purchaser u) {

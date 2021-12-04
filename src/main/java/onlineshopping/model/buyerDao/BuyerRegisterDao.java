@@ -1,12 +1,12 @@
 package onlineshopping.model.buyerDao;
 
 import onlineshopping.model.Buyer;
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
+import onlineshopping.model.Util.PasswordUtil;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class BuyerRegisterDao {
 
@@ -15,6 +15,7 @@ public class BuyerRegisterDao {
 		try {
 			Connection con = null;
 			con = DBUtil.getConnection();
+			buyer.setBPassword(Base64.encodeBase64String(PasswordUtil.encrypt(buyer.getBPassword(),"12345678")));
 			String insertSQL = "insert into buyer(BUsername,BPassword,BPhone,BAddress) values(?,?,?,?)";
 			String querySQL = "select * from buyer where BUsername=?";
 			java.sql.PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);

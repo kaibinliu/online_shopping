@@ -2,7 +2,10 @@ package onlineshopping.controller.seller;
 
 
 import onlineshopping.model.Seller;
+import onlineshopping.model.Util.PasswordUtil;
 import onlineshopping.model.sellerDao.SellerRegisterDao;
+import org.apache.tomcat.util.codec.binary.Base64;
+import sun.security.util.Password;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

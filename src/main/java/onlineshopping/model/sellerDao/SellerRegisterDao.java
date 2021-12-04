@@ -1,9 +1,10 @@
 package onlineshopping.model.sellerDao;
 
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Seller;
+import onlineshopping.model.Util.PasswordUtil;
+import org.apache.tomcat.util.codec.binary.Base64;
 
-import javax.naming.NamingException;
 import java.sql.*;
 
 public class SellerRegisterDao {
@@ -12,6 +13,7 @@ public class SellerRegisterDao {
 		Connection con = null;
 		try {
 			con = DBUtil.getConnection();
+			seller.setSPassword(Base64.encodeBase64String(PasswordUtil.encrypt(seller.getSPassword(),"12345678")));
 			String insertSQL = "insert into seller(SUsername,SPassword) values(?,?)";
 			String querySQL = "select * from seller where SUsername=?";
 			PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
