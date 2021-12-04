@@ -1,4 +1,4 @@
-package onlineshopping.model.sellerDao;
+package onlineshopping.model;
 
 public class SetPassword {
     public String password;

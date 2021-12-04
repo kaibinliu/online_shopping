@@ -1,25 +1,19 @@
 package onlineshopping.model.goodsDao;
 
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Goods;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class GoodDao {
-	public static final String URL="jdbc:mysql://localhost:3306/onlinesp?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
-	public static final String USER="root";
-	public static final String PWD="001124";
 	
 	public void release(Goods good) throws SQLException {
 		Connection conn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="insert into goods(GName,GCategoryone,GCategorytwo,GPrice,GPicture,GDescribe,GStock) values(?,?,?,?,?,?,?)";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, good.getGName());
@@ -31,7 +25,7 @@ public class GoodDao {
 			ps.setInt(7,good.getGStock());
 			ps.executeUpdate();
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {
@@ -50,11 +44,8 @@ public class GoodDao {
 		ResultSet rs=null;
 		ArrayList<Goods> gl=new ArrayList<Goods>();
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
+
 			String sql="select * from goods where GStock>0";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery();
@@ -64,7 +55,7 @@ public class GoodDao {
 			}
 			return gl;
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {
@@ -84,11 +75,7 @@ public class GoodDao {
 		ResultSet rs=null;
 		ArrayList<Goods> gl=new ArrayList<Goods>();
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="select * from goods where GStock=0";
 			ps=conn.prepareStatement(sql);
 			rs=ps.executeQuery();
@@ -98,7 +85,7 @@ public class GoodDao {
 			}
 			return gl;
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {
@@ -117,18 +104,14 @@ public class GoodDao {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="update goods set GStock=? where GId=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, num);
 			ps.setInt(2, id);
 			ps.executeUpdate();
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {
@@ -141,25 +124,21 @@ public class GoodDao {
 		}
 	}
 
-	public void cutStock(int id,int num) throws SQLException  {
+	public void addStock(int id,int num) throws SQLException  {
 		Connection conn=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="select * from goods where GId=?";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			rs=ps.executeQuery();
 			rs.next();
 			int n=rs.getInt("GStock");
-			changeStock(id,n-num);
+			changeStock(id,n+num);
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {

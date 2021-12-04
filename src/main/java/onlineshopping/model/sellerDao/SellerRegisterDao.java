@@ -1,20 +1,17 @@
 package onlineshopping.model.sellerDao;
 
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Seller;
 
+import javax.naming.NamingException;
 import java.sql.*;
 
 public class SellerRegisterDao {
-	String url = "jdbc:mysql://127.0.0.1:3306/onlinesp?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
-	String username="root";
-	String password="001124";
-	
+
 	public boolean register(Seller seller) {
-		try {  Class.forName("com.mysql.cj.jdbc.Driver");
-	      }
-	      catch(Exception e){}
+		Connection con = null;
 		try {
-			Connection con = DriverManager.getConnection(url,username,password);
+			con = DBUtil.getConnection();
 			String insertSQL = "insert into seller(SUsername,SPassword) values(?,?)";
 			String querySQL = "select * from seller where SUsername=?";
 			PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -33,7 +30,7 @@ public class SellerRegisterDao {
 				con.close();
 				return true;
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;

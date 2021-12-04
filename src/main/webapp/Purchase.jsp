@@ -32,11 +32,11 @@
         }
     </style>
     <script language="javascript">
-        function success(GId,BId,PCount){
-            window.location.href="SuccessDeal?GId="+GId+"&BId="+BId+"&PCount="+PCount;
+        function success(GId,BId){
+            window.location.href="SuccessDeal?GId="+GId+"&BId="+BId;
         }
-        function fail(GId,BId){
-            window.location.href="FailedDeal?GId="+GId+"&BId="+BId;
+        function fail(GId,BId,PCount){
+            window.location.href="FailedDeal?GId="+GId+"&BId="+BId+"&PCount="+PCount;
         }
     </script>
 </head>
@@ -44,7 +44,7 @@
 <%
 	Seller seller=(Seller)session.getAttribute("seller");
 	if(null==seller){
-		response.sendRedirect("sellerlogin.jsp");
+		response.sendRedirect("SellerLogin.jsp");
 	}else{
 %>
     <h1>订单信息</h1><!--已出售商品信息-->
@@ -85,7 +85,7 @@
                 <td class="tip">交易地址：</td><td> <%=p.getPAddress() %></td>
             </tr>
             <tr>
-                <td class="tip">操作：</td><td><button onclick="success(<%=p.getGId()%>,<%=p.getBId()%>,<%=p.getPCount()%>)">交易成功</button></td><td><button onclick="fail(<%=p.getGId()%>,<%=p.getBId()%>)">交易失败</button></td>
+                <td class="tip">操作：</td><td><button onclick="success(<%=p.getGId()%>,<%=p.getBId()%>)">交易成功</button></td><td><button onclick="fail(<%=p.getGId()%>,<%=p.getBId()%>,<%=p.getPCount()%>)">交易失败</button></td>
             </tr>
         </table><br/><br/><%} %>
         <a href="Show.jsp">返回</a><br/>

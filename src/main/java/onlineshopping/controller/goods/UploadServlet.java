@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 @WebServlet(name = "UploadServlet", value = "/UploadServlet")
-@MultipartConfig(location = "E:\\IDEA2018\\IDEAworkplace2\\onlineshopping\\src\\main\\webapp\\img")
+@MultipartConfig(location = "E:\\IDEA2018\\IDEAworkplace\\online_shopping\\src\\main\\webapp\\img")
 public class UploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -20,7 +20,7 @@ public class UploadServlet extends HttpServlet {
         String ima_add="";
         Goods good=new Goods();
         request.setCharacterEncoding("utf-8");
-        String basePath = "E:\\IDEA2018\\IDEAworkplace2\\onlineshopping\\src\\main\\webapp\\img";
+        String basePath = "E:\\IDEA2018\\IDEAworkplace\\online_shopping\\src\\main\\webapp\\img";
         // ��ȡ�����ϴ��ļ���Ϣ����д�������
         Collection<Part> parts = request.getParts();
         for (Part part : parts) {

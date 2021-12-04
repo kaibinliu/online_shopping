@@ -1,5 +1,6 @@
 package onlineshopping.model.buyerDao;
 
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Purchaser;
 
 import java.sql.Connection;
@@ -14,11 +15,9 @@ public class pddao {
         int error=0;
         try {
             Connection conn = null;
+            conn = DBUtil.getConnection();
             Statement state = null;
             ResultSet rs = null;
-            Class.forName("com.mysql.jdbc.Driver");
-            String jdbc = "jdbc:mysql://127.0.0.1:3306/onlineshop?characterEncoding=UTF-8&serverTimezone=UTC";
-            conn = DriverManager.getConnection(jdbc, "root", "1234");
             state = conn.createStatement();
             String cs="select * from goods where GId='"+u.getId()+"'";
             rs=state.executeQuery(cs);

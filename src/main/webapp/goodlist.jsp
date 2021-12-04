@@ -13,8 +13,8 @@
 </head>
 <body>
 <p>
-    <a href="">登录</a>
-    <a href="">注册</a>
+    <a href="BuyerLogin.jsp">登录</a>
+    <a href="BuyerRegister.jsp">注册</a>
 </p>
 <form action="Sousuo" method="post">
     <input type="text" name="ss">

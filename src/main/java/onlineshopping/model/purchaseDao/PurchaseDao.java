@@ -1,14 +1,12 @@
 package onlineshopping.model.purchaseDao;
 
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Purchase;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class PurchaseDao {
-	public static final String URL="jdbc:mysql://localhost:3306/onlinesp?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
-	public static final String USER="root";
-	public static final String PWD="001124";
 	
 	public ArrayList<Purchase> read(int GNo) throws SQLException {
 		Connection conn=null;
@@ -16,11 +14,7 @@ public class PurchaseDao {
 		ResultSet rs=null;
 		ArrayList<Purchase> pl=new ArrayList<Purchase>();
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="select purchase.BId,purchase.GId,goods.GName,buyer.BUsername,purchase.BPhone,purchase.PDate,purchase.PCount,purchase.PAddress,purchase.PState from purchase,goods,buyer where purchase.GId=? and purchase.PState='交易中' and buyer.BId=Purchase.BId and goods.GId=purchase.GId";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, GNo);
@@ -31,7 +25,7 @@ public class PurchaseDao {
 			}
 			return pl;
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {
@@ -51,11 +45,7 @@ public class PurchaseDao {
 		ResultSet rs=null;
 		ArrayList<Purchase> pl=new ArrayList<Purchase>();
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="select purchase.BId,purchase.GId,goods.GName,buyer.BUsername,purchase.BPhone,purchase.PDate,purchase.PCount,purchase.PAddress,purchase.PState from purchase,goods,buyer where purchase.BId=? and buyer.BId=Purchase.BId and goods.GId=purchase.GId";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, BId);
@@ -66,7 +56,7 @@ public class PurchaseDao {
 			}
 			return pl;
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {
@@ -85,11 +75,7 @@ public class PurchaseDao {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
-			//1.
-			Class.forName("com.mysql.jdbc.Driver");
-			//2.��������java.sql ��Ҫ��com.mysql��jdbc
-			conn=DriverManager.getConnection(URL, USER, PWD);
-			//3.sql���
+			conn = DBUtil.getConnection();
 			String sql="update purchase set PState=? where GId=? and BId=?";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, s);
@@ -97,7 +83,7 @@ public class PurchaseDao {
 			ps.setInt(3, Bid);
 			ps.executeUpdate();
 		}
-		catch(ClassNotFoundException e) {
+		catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e);
 		}finally {

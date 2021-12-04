@@ -1,5 +1,6 @@
 package onlineshopping.model.sellerDao;
 
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Seller;
 
 import java.sql.Connection;
@@ -9,16 +10,11 @@ import java.sql.ResultSet;
 
 public class SellerLoginDao {
 
-	String url = "jdbc:mysql://127.0.0.1:3306/onlinesp?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
-	String username="root";
-	String password="001124";
-	
 	public boolean Login(Seller seller) {
+
 		try {
-    		Class.forName("com.mysql.cj.jdbc.Driver");
-    	}catch(Exception e) {}
-		try {
-			Connection con = DriverManager.getConnection(url,username,password);
+			Connection con = null;
+			con = DBUtil.getConnection();
 			String querySQL = "select * from seller where SUsername=? and SPassword=?";
 			PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			pre.setString(1, seller.getSUsername());

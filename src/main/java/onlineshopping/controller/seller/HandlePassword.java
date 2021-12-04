@@ -1,7 +1,7 @@
 package onlineshopping.controller.seller;
 
 import onlineshopping.model.sellerDao.HandlePasswordBean;
-import onlineshopping.model.sellerDao.SetPassword;
+import onlineshopping.model.SetPassword;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
