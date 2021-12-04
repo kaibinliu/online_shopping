@@ -33,10 +33,10 @@
     </style>
     <script language="javascript">
         function success(GId,BId){
-            window.location.href="SuccessDeal?GId="+GId+"&BId="+BId;
+            window.location.href="../../SuccessDeal?GId="+GId+"&BId="+BId;
         }
         function fail(GId,BId,PCount){
-            window.location.href="FailedDeal?GId="+GId+"&BId="+BId+"&PCount="+PCount;
+            window.location.href="../../FailedDeal?GId="+GId+"&BId="+BId+"&PCount="+PCount;
         }
     </script>
 </head>
@@ -44,7 +44,7 @@
 <%
 	Seller seller=(Seller)session.getAttribute("seller");
 	if(null==seller){
-		response.sendRedirect("SellerLogin.jsp");
+		response.sendRedirect("../seller/SellerLogin.jsp");
 	}else{
 %>
     <h1>订单信息</h1><!--已出售商品信息-->
@@ -53,7 +53,7 @@
         <%
         int no=Integer.parseInt(request.getParameter("id"));
         if(no==0)
-        	response.sendRedirect("Show.jsp");
+        	response.sendRedirect("../goods/Show.jsp");
         PurchaseDao pd=new PurchaseDao();
 		ArrayList<Purchase> pl=pd.read(no);
 		if(pl.isEmpty()==false){
@@ -88,10 +88,10 @@
                 <td class="tip">操作：</td><td><button onclick="success(<%=p.getGId()%>,<%=p.getBId()%>)">交易成功</button></td><td><button onclick="fail(<%=p.getGId()%>,<%=p.getBId()%>,<%=p.getPCount()%>)">交易失败</button></td>
             </tr>
         </table><br/><br/><%} %>
-        <a href="Show.jsp">返回</a><br/>
+        <a href="../goods/Show.jsp">返回</a><br/>
 <%}else {%>
 <h1>暂无意向购买人信息！</h1><br/>
-<a href="Show.jsp">返回</a><br/>
+<a href="../goods/Show.jsp">返回</a><br/>
 <%}} %>
 </body>
 </html>

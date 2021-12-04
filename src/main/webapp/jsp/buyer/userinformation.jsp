@@ -12,7 +12,7 @@
 <div style="height: 12cm; background-color: skyblue;margin-left: auto;margin-right: auto; width: 8cm ;text-align: center">
     <p>用户信息填写</p> <br>
     <%  int id= Integer.parseInt(request.getParameter("id"));%>
-    <form action="userinfo" method="post">
+    <form action="../../userinfo" method="post">
         请输入姓名:<input type="text" name="buyername"><br>
         <br><br>
         请输入电话:<input type="text" name="buyerphone"><br> //数量地址

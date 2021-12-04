@@ -1,54 +1,47 @@
-//package onlineshopping.controller.goods;
-//
-//
-//
-//import org.apache.tomcat.util.http.fileupload.FileItem;
-//import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-//import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-//
-//import javax.servlet.*;
-//import javax.servlet.http.*;
-//import javax.servlet.annotation.*;
-//import java.io.File;
-//import java.io.IOException;
-//import java.util.List;
-//
-//@WebServlet(name = "UploadImageInfo", value = "/UploadImageInfo")
-//public class UploadImageInfo extends HttpServlet {
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        doPost(request,response);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        try {
-//            // 配置上传参数
-//            DiskFileItemFactory factory = new DiskFileItemFactory();
-//            ServletFileUpload upload = new ServletFileUpload(factory);
-//            // 解析请求的内容提取文件数据
-//            @SuppressWarnings("unchecked")
-//            List<FileItem> formItems = upload.parseRequest(request);
-//
-//            // 迭代表单数据
-//            for (FileItem item : formItems) {
-//                // 处理不在表单中的字段
-//                if (!item.isFormField()) {
-//                    String fileName = item.getName();
-//                    //定义上传文件的存放路径
-//                    String path = request.getServletContext().getRealPath("/uploadFiles");
-//                    //定义上传文件的完整路径
-//                    String filePath = String.format("%s/%s",path,fileName);
-//                    File storeFile = new File(filePath);
-//                    // 在控制台输出文件的上传路径
-//                    System.out.println(filePath);
-//                    // 保存文件到硬盘
-//                    item.write(storeFile);
-//                }
-//            }
-//        } catch (Exception ex) {
-//
-//        }
-//
-//    }
-//}
+package onlineshopping.controller.goods;
+
+import onlineshopping.model.Goods;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.UUID;
+
+@WebServlet(name = "UploadImageInfo", value = "/UploadImageInfo")
+@MultipartConfig(location = "E:\\IDEA2018\\IDEAworkplace\\online_shopping\\src\\main\\webapp\\img")
+public class UploadImageInfo extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Ϊ������������
+        String ima_add="";
+        Goods good=new Goods();
+        request.setCharacterEncoding("utf-8");
+        String basePath = "E:\\IDEA2018\\IDEAworkplace\\online_shopping\\src\\main\\webapp\\img";
+        // ��ȡ�����ϴ��ļ���Ϣ����д�������
+        Collection<Part> parts = request.getParts();
+        for (Part part : parts) {
+            if (part.getSize() > 0) {
+                String fname = part.getSubmittedFileName();
+                // �������һ��uuid��Ϊ�ļ�����
+                String uuid = UUID.randomUUID().toString();
+                // ��ȡ�ļ���׺
+                if(fname!=null) {
+                    String suffix = fname.substring(fname.lastIndexOf("."));
+                    // ���uuid���ļ���׺��Ϊ�µ��ļ�����
+                    fname = uuid + suffix;
+                    part.write(basePath + "/"+ fname);
+                    ima_add+="/img/" + fname+";";
+                }else
+                    continue;
+            }
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+}

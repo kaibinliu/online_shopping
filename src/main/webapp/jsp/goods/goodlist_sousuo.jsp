@@ -45,7 +45,7 @@
     详细信息:<p> <%=g1.getGDescribe() %></p>
     价格:<%=g1.getGPrice() %>
     库存:<%=g1.getGStock() %>
-    <form action="userinformation.jsp" method="post">
+    <form action="../buyer/userinformation.jsp" method="post">
       <input style="float: right;"type="submit" value="购买"  >
       <input type="hidden" name="id" value=<%=g1.getGId()%>>
     </form>

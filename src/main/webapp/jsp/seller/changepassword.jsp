@@ -8,7 +8,7 @@
 <%
 	Seller seller=(Seller)session.getAttribute("seller");
 	if(null==seller){
-		response.sendRedirect("sellerlogin.jsp");
+		response.sendRedirect("SellerLogin.jsp");
 	}else{
 %>
 <br>
@@ -18,7 +18,7 @@
 <br>
 <br>
 <font size=4xp color=black><b>&nbsp;&nbsp;修改密码</b></font><br><br><br>
-<FORM action="HandlePassword" Method="post">
+<FORM action="../../HandlePassword" Method="post">
 <font color=black size=4xp>修改密码:&nbsp;</font><Input type=password name="password"><br><br>
 <font color=black size=4xp>确认密码:&nbsp;</font><Input type=password name="again_password"><br><br>
 <input type="submit" value="提交" style="background:url(imagepath) no-repeat"/>

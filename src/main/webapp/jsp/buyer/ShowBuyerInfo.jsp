@@ -42,7 +42,7 @@
 <%
     Seller seller=(Seller)session.getAttribute("seller");
     if(null==seller){
-        response.sendRedirect("sellerlogin.jsp");
+        response.sendRedirect("../seller/SellerLogin.jsp");
     }else{
 %>
 <h1>注册客户信息</h1><!--注册客户信息-->
@@ -72,10 +72,10 @@
     </tr>
     <%} %>
 </table><hr/>
-<a href="Show.jsp">返回</a><br/>
+<a href="../goods/Show.jsp">返回</a><br/>
 <%}else {%>
 <h1>暂无注册用户！</h1><br/>
-<a href="Show.jsp">返回</a><br/>
+<a href="../goods/Show.jsp">返回</a><br/>
 <%}} %>
 </body>
 </html>
