@@ -25,9 +25,12 @@ public class FailedDeal extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         int GId=Integer.parseInt(request.getParameter("GId"));
         int BId=Integer.parseInt(request.getParameter("BId"));
+        int PCount=Integer.parseInt(request.getParameter("PCount"));
         PurchaseDao pd=new PurchaseDao();
+        GoodDao gd=new GoodDao();
         try {
             pd.stateChange("交易失败",BId,GId);
+            gd.addStock(GId,PCount);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

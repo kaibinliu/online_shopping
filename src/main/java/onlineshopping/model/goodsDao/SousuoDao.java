@@ -1,5 +1,6 @@
 package onlineshopping.model.goodsDao;
 
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Goods;
 import onlineshopping.model.Repository;
 
@@ -16,12 +17,10 @@ public class SousuoDao {
         try {
 
             ArrayList<Goods> goodlist =new ArrayList<Goods>();
-            Connection conn=null;
+            Connection conn = null;
+            conn = DBUtil.getConnection();
             Statement state=null;
             ResultSet rs=null;
-            Class.forName("com.mysql.jdbc.Driver");
-            String jdbc="jdbc:mysql://127.0.0.1:3306/onlineshop?characterEncoding=UTF-8&serverTimezone=UTC";
-            conn= DriverManager.getConnection(jdbc, "root", "1234");
             state =conn.createStatement();
             String sql="select * from goods";
             rs=state.executeQuery(sql);

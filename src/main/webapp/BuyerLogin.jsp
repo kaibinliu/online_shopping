@@ -44,6 +44,6 @@
             </tr>
         </table>
     </form>
-    <a href="buyerRegister.jsp">商家注册</a>
+    <a href="BuyerRegister.jsp">商家注册</a>
 </body>
 </html>

@@ -1,26 +1,23 @@
 package onlineshopping.model.buyerDao;
 
-import com.sun.org.apache.bcel.internal.generic.Select;
+import onlineshopping.model.Buyer;
+import onlineshopping.model.DBUtil.DBUtil;
 import onlineshopping.model.Purchaser;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class userdao {
  public static void login(Purchaser u) {
 	 
 	 try {
-			Connection conn=null;
+		    Connection conn = null;
+			conn = DBUtil.getConnection();
 			Statement  state=null;
 			ResultSet rs=null;
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Class.forName("com.mysql.jdbc.Driver");
-			String jdbc="jdbc:mysql://127.0.0.1:3306/onlineshop?characterEncoding=UTF-8&serverTimezone=UTC";
-			conn=DriverManager.getConnection(jdbc, "root", "1234");
 			state =conn.createStatement();
 			 String cskucun="select * from goods where GId='"+u.getId()+"'";
 			 rs=state.executeQuery(cskucun);
@@ -43,10 +40,31 @@ public class userdao {
 		}catch (Exception e) {
 			e.printStackTrace();
 			}
-	 
-	 
-	 
-	 
-	 
  }
+	public ArrayList<Buyer> readInfo() throws SQLException {
+		Connection conn = null;
+		Statement  state=null;
+		ResultSet rs=null;
+		ArrayList<Buyer> bl=new ArrayList<Buyer>();
+		try {
+
+			conn = DBUtil.getConnection();
+			state =conn.createStatement();
+			String sql="select BId,BUsername,BPhone,BAddress from buyer";
+			rs=state.executeQuery(sql);
+			while(rs.next()) {
+				Buyer b=new Buyer(rs.getInt(1),rs.getString(2),null,rs.getString(3),rs.getString(4));
+				bl.add(b);
+			}
+			return bl;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(null!=rs)
+				rs.close();
+			if(null!=conn)
+				conn.close();
+		}
+		return null;
+	}
 }

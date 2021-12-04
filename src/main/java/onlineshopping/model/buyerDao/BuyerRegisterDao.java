@@ -1,22 +1,20 @@
 package onlineshopping.model.buyerDao;
 
 import onlineshopping.model.Buyer;
+import onlineshopping.model.DBUtil.DBUtil;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BuyerRegisterDao {
-	String url = "jdbc:mysql://127.0.0.1:3306/onlinesp?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
-	String username="root";
-	String password="001124";
-	
+
 	public boolean register(Buyer buyer) {
-		try {  Class.forName("com.mysql.cj.jdbc.Driver");
-	      }
-	      catch(Exception e){}
+
 		try {
-			java.sql.Connection con = DriverManager.getConnection(url,username,password);
+			Connection con = null;
+			con = DBUtil.getConnection();
 			String insertSQL = "insert into buyer(BUsername,BPassword,BPhone,BAddress) values(?,?,?,?)";
 			String querySQL = "select * from buyer where BUsername=?";
 			java.sql.PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -37,7 +35,7 @@ public class BuyerRegisterDao {
 				con.close();
 				return true;
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO �Զ����ɵ� catch ��
 			e.printStackTrace();
 			return false;
