@@ -1,6 +1,6 @@
 package onlineshopping.model.goodsDao;
 
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Goods;
 
 import java.sql.*;

@@ -1,4 +1,4 @@
-package onlineshopping.model.DBUtil;
+package onlineshopping.model.Util;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

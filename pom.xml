@@ -31,6 +31,11 @@
       <artifactId>tomcat-embed-core</artifactId>
       <version>9.0.54</version>
     </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.18</version>
+    </dependency>
   </dependencies>
 
   <build>

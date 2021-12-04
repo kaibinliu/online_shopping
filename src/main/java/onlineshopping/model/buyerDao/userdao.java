@@ -1,7 +1,7 @@
 package onlineshopping.model.buyerDao;
 
 import onlineshopping.model.Buyer;
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Purchaser;
 
 import java.sql.*;

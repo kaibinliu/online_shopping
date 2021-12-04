@@ -1,6 +1,6 @@
 package onlineshopping.model.sellerDao;
 
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.SetPassword;
 
 import java.sql.Connection;

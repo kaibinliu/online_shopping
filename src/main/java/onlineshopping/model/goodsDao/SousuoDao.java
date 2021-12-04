@@ -1,11 +1,10 @@
 package onlineshopping.model.goodsDao;
 
-import onlineshopping.model.DBUtil.DBUtil;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Goods;
 import onlineshopping.model.Repository;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
