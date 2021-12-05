@@ -15,24 +15,7 @@
     <title>在线购物商城</title>
     <meta name="keywords" content="已售出商品信息管理"/>
     <meta name="description" content="管理"/>
-    <style type="text/css">
-        .haomaTitle
-        {
-            width: 604px;
-            height: 30px;
-            line-height: 25px;
-            font-size: 18px;
-            border-bottom: 1px #ddd solid;
-        }
-        .tip
-        {
-            text-align: right;
-        }
-        .btnSubmit
-        {
-            text-align: center;
-        }
-    </style>
+    <link href="../../css/goods/goods.css" rel="stylesheet" type="text/css" />
     <script language="javascript">
         function stockChange(id){
             var num= prompt("修改库存");

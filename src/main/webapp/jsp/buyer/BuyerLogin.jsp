@@ -7,24 +7,7 @@
     <title>在线购物商城</title>
     <meta name="keywords" content="账号登录"/>
     <meta name="description" content="登录"/>
-    <style type="text/css">
-        .haomaTitle
-        {
-            width: 604px;
-            height: 30px;
-            line-height: 25px;
-            font-size: 18px;
-            border-bottom: 1px #ddd solid;
-        }
-        .tip
-        {
-            text-align: right;
-        }
-        .btnSubmit
-        {
-            text-align: center;
-        }
-    </style>
+    <link href="../../css/buyer/buyer.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>买家登录</h1><!--商家登录信息-->
@@ -44,6 +27,6 @@
             </tr>
         </table>
     </form>
-    <a href="BuyerRegister.jsp">商家注册</a>
+    <a href="BuyerRegister.jsp">买家注册</a>&nbsp;<a href="../../index.jsp">返回首页</a>
 </body>
 </html>

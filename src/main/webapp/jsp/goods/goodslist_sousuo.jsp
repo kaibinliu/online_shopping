@@ -27,7 +27,7 @@
   <input type="submit" value="搜索">
 </form>
 <header style="width:8cm; height: 1cm; line-height: 1cm; text-align: center; margin-left: auto;margin-right: auto;   background-color: sandybrown;">
-  <a href="goodlist.jsp">返回首页</a>
+  <a href="goodslist.jsp">返回首页</a>
   商品列表
 </header>
 <%

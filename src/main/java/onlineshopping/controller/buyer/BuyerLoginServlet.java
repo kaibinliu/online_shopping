@@ -38,7 +38,7 @@ public class BuyerLoginServlet extends HttpServlet {
         if(a) {
             HttpSession session = request.getSession(true);
             session.setAttribute("buyer", buyer);
-            response.sendRedirect("jsp/goods/goodlist.jsp");
+            response.sendRedirect("jsp/goods/goodslist.jsp");
         }else {
             response.sendRedirect("jsp/buyer/BuyerLogin_fail.jsp");
         }

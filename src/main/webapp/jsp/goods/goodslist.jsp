@@ -25,9 +25,8 @@
     }else{
 %>
 <p style="text-align:right;">
-    <a href="">查看个人购买记录</a>
-    <a href="">修改密码</a>
-    <a href="">退出登录</a>
+    <a href="../buyer/BuyerPurchaseHistory.jsp?id=<%=buyer.getBId()%>">查看个人购买记录</a>
+    <a href="../buyer/quit.jsp">退出登录</a>
 </p>
 <%
     }

@@ -23,7 +23,8 @@
         <br><br>
         <input style=" width: 2cm; height: 1cm;" type="submit" value="提交">
         <input type="hidden" name="id" value=<%=id %>>
-</div>
+
 </form>
+</div>
 </body>
 </html>

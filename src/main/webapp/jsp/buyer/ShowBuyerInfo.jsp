@@ -12,32 +12,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>在线购物商城</title>
-<meta name="keywords" content="客户信息"/>
-<meta name="description" content="客户"/>
-<style type="text/css">
-    .haomaTitle
-    {
-        width: 604px;
-        height: 30px;
-        line-height: 25px;
-        font-size: 18px;
-        border-bottom: 1px #ddd solid;
-    }
-    .tip
-    {
-        text-align: right;
-    }
-    .btnSubmit
-    {
-        text-align: center;
-    }
-</style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>在线购物商城</title>
+        <meta name="keywords" content="客户信息"/>
+        <meta name="description" content="客户"/>
+        <link href="../../css/buyer/buyer.css" rel="stylesheet" type="text/css" />
+    </head>
 <body>
 <%
     Seller seller=(Seller)session.getAttribute("seller");

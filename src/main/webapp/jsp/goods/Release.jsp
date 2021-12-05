@@ -11,24 +11,7 @@
     <title>在线购物商城</title>
     <meta name="keywords" content="商品信息注册"/>
     <meta name="description" content="注册"/>
-    <style type="text/css">
-        .haomaTitle
-        {
-            width: 604px;
-            height: 30px;
-            line-height: 25px;
-            font-size: 18px;
-            border-bottom: 1px #ddd solid;
-        }
-        .tip
-        {
-            text-align: right;
-        }
-        .btnSubmit
-        {
-            text-align: center;
-        }
-    </style>
+    <link href="../../css/goods/goods.css" rel="stylesheet" type="text/css" />
     <script language="JavaScript" type="text/javascript">
         var list=[
             ["奶粉","纸尿裤","营养品","辅食","喂养","洗护用品","洗涤用品","玩具"],
