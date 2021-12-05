@@ -7,24 +7,7 @@
     <title>在线购物商城</title>
     <meta name="keywords" content="账号注册"/>
     <meta name="description" content="注册"/>
-    <style type="text/css">
-        .haomaTitle
-        {
-            width: 604px;
-            height: 30px;
-            line-height: 25px;
-            font-size: 18px;
-            border-bottom: 1px #ddd solid;
-        }
-        .tip
-        {
-            text-align: right;
-        }
-        .btnSubmit
-        {
-            text-align: center;
-        }
-    </style>
+    <link href="../../css/buyer/buyer.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>买家注册</h1><!--买注册信息-->

@@ -31,6 +31,7 @@ public class BuyerLoginDao {
 				con.close();
 				return false;
 			}else {
+				buyer.setBId(rs.getInt(1));
 				con.close();
 				return true;
 			}

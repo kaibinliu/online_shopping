@@ -1,6 +1,15 @@
 package onlineshopping.model;
 
 public class SetPassword {
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String username;
     public String password;
     public String againpassword;
 	public SetPassword() {
@@ -8,8 +17,9 @@ public class SetPassword {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SetPassword(String password, String againpassword) {
+	public SetPassword(String username,String password, String againpassword) {
 		super();
+		this.username = username;
 		this.password = password;
 		this.againpassword = againpassword;
 	}

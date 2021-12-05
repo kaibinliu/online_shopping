@@ -1,5 +1,6 @@
 package onlineshopping.controller.seller;
 
+import onlineshopping.model.Seller;
 import onlineshopping.model.sellerDao.HandlePasswordBean;
 import onlineshopping.model.SetPassword;
 
@@ -33,10 +34,12 @@ public class HandlePassword extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String password = request.getParameter("password").trim();
         String again_password=request.getParameter("again_password").trim();
-        SetPassword set = new SetPassword(password, again_password);
+        HttpSession session = request.getSession(true);
+        Seller seller = (Seller)session.getAttribute("seller");
+        String username = seller.getSUsername();
+        SetPassword set = new SetPassword(username,password, again_password);
         HandlePasswordBean hp=new HandlePasswordBean();
 
-        HttpSession session=request.getSession(true);
 
         //传入参数
         if(!password.equals(again_password)){
