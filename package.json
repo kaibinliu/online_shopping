@@ -1,0 +1,10 @@
+{
+  "name": "online_shopping",
+  "version": "1.0.0",
+  "devDependencies": {
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "formidable": "^2.0.1"
+  }
+}

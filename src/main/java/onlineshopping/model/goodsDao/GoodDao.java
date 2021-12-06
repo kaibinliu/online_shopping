@@ -3,6 +3,7 @@ package onlineshopping.model.goodsDao;
 import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Goods;
 
+import javax.naming.NamingException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -149,5 +150,32 @@ public class GoodDao {
 			if(null!=conn)
 				conn.close();
 		}
+	}
+
+	public String showDescribe(int id) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			con = DBUtil.getConnection();
+			String sql = "select * from goods where GId=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs=ps.executeQuery();
+			rs.next();
+			String describe = rs.getString("GDescribe");
+			return describe;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}finally {
+			if(null!=rs)
+				rs.close();
+			if(null!=ps)
+				ps.close();
+			if(null!=con)
+				con.close();
+		}
+		return null;
 	}
 }
