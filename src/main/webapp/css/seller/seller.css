@@ -1,0 +1,25 @@
+#tt{
+    height:50px;
+    width:200px;
+    top:50%;
+    left:51%;
+    position:absolute;
+    margin-top:-100px;
+    margin-left:-100px;
+}
+.haomaTitle
+{
+    width: 604px;
+    height: 30px;
+    line-height: 25px;
+    font-size: 18px;
+    border-bottom: 1px #ddd solid;
+}
+.tip
+{
+    text-align: right;
+}
+.btnSubmit
+{
+    text-align: center;
+}

@@ -68,6 +68,9 @@
             <tr>
                 <td class="tip">商品价格：</td><td width=400> <%=good.getGPrice() %></td>
             </tr>
+            <tr>
+                <td class="tip">商品描述：</td><td width=400><a href="../../GoodsDescribeServlet?id=<%=good.getGId()%>">点击查看详情</a></td>
+            </tr>
 			<tr>
                 <td class="tip">商品库存：</td><td width=400> <%=good.getGStock()%>
                 &nbsp<a href="../purchase/Purchase.jsp?id=<%=good.getGId()%>&name=<%=good.getGName()%>">查看订单</a></td>

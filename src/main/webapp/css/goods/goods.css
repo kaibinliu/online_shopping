@@ -1,0 +1,16 @@
+.haomaTitle
+{
+    width: 604px;
+    height: 30px;
+    line-height: 25px;
+    font-size: 18px;
+    border-bottom: 1px #ddd solid;
+}
+.tip
+{
+    text-align: right;
+}
+.btnSubmit
+{
+    text-align: center;
+}
