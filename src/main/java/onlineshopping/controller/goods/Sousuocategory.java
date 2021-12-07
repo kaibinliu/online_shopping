@@ -26,8 +26,9 @@ public class Sousuocategory extends HttpServlet {
             response.sendRedirect("jsp/goods/goodslist_sousuo.jsp");
         }else if(null==session.getAttribute("buyer") && null!=session.getAttribute("seller")){
             response.sendRedirect("jsp/goods/GoodsManage_FilterAndSearchResult.jsp");
+        }else {
+            response.sendRedirect("jsp/goods/goodslist_sousuo.jsp");
         }
-
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
