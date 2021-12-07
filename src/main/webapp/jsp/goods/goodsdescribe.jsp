@@ -7,9 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="describe" class="java.lang.String" scope="request"></jsp:useBean>
-<%
-    System.out.println("页面接收到的HTML为：\n"+describe);
-%>
 <!DOCTYPE html>
 <html>
 <head>

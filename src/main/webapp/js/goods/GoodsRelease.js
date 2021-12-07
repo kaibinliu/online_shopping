@@ -15,8 +15,75 @@ tinymce.init({
     ],*/
     fontsize_formats: '12px 14px 16px 18px 24px 36px 48px 56px 72px',
     font_formats: '微软雅黑=Microsoft YaHei,Helvetica Neue,PingFang SC,sans-serif;苹果苹方=PingFang SC,Microsoft YaHei,sans-serif;宋体=simsun,serif;仿宋体=FangSong,serif;黑体=SimHei,sans-serif;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;',
-    images_upload_url: '/onlineshopping_war_exploded/PublicController',
-    images_upload_base_path: 'http://localhost:8080/',
+    images_upload_url: '/onlineshopping_war_exploded/ImageUpload',
+    file_picker_callback: function (callback, value, meta) {
+        //文件分类
+        var filetype='.pdf, .txt, .zip, .rar, .7z, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .mp3, .mp4';
+        //后端接收上传文件的地址
+        var upurl='/onlineshopping_war_exploded/FileUpload';
+        //为不同插件指定文件类型及后端地址
+        switch(meta.filetype){
+            case 'image':
+                filetype='.jpg, .jpeg, .png, .gif';
+                upurl='/onlineshopping_war_exploded/ImageUpload';
+                break;
+            case 'media':
+                filetype='.mp3, .mp4';
+                upurl='/onlineshopping_war_exploded/MediaUpload';
+                break;
+            case 'file':
+            default:
+        }
+        //模拟出一个input用于添加本地文件
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', filetype);
+        input.click();
+        input.onchange = function() {
+            var file = this.files[0];
+
+            var xhr, formData;
+            console.log(file.name);
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', upurl);
+            xhr.onload = function() {
+                var json;
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+                json = JSON.parse(xhr.responseText);
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                callback(json.location);
+            };
+            formData = new FormData();
+            formData.append('file', file, file.name );
+            xhr.send(formData);
+
+            //下方被注释掉的是官方的一个例子
+            //放到下面给大家参考
+
+            /*var reader = new FileReader();
+            reader.onload = function () {
+                // Note: Now we need to register the blob in TinyMCEs image blob
+                // registry. In the next release this part hopefully won't be
+                // necessary, as we are looking to handle it internally.
+                var id = 'blobid' + (new Date()).getTime();
+                var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                var base64 = reader.result.split(',')[1];
+                var blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                // call the callback and populate the Title field with the file name
+                callback(blobInfo.blobUri(), { title: file.name });
+            };
+            reader.readAsDataURL(file);*/
+        };
+    },
 });
 var list=[
     ["奶粉","纸尿裤","营养品","辅食","喂养","洗护用品","洗涤用品","玩具"],

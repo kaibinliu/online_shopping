@@ -1,11 +1,13 @@
 package onlineshopping.model.sellerDao;
 
-import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Seller;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Util.PasswordUtil;
 import org.apache.tomcat.util.codec.binary.Base64;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class SellerRegisterDao {
 

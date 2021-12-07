@@ -1,7 +1,7 @@
 package onlineshopping.model.sellerDao;
 
-import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.SetPassword;
+import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Util.PasswordUtil;
 import org.apache.tomcat.util.codec.binary.Base64;
 
