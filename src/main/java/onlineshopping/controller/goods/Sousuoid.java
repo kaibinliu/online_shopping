@@ -19,7 +19,7 @@ public class Sousuoid extends HttpServlet {
         Repository repo= SousuoidDao.sousuoid(id);
         request.setAttribute("repo",repo);
         request.getSession(true).setAttribute("repo",repo);
-        response.sendRedirect("good_details.jsp");
+        response.sendRedirect("jsp/goods/goods_details.jsp");
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

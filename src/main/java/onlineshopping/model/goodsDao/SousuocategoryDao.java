@@ -2,6 +2,7 @@ package onlineshopping.model.goodsDao;
 
 import onlineshopping.model.Goods;
 import onlineshopping.model.Repository;
+import onlineshopping.model.Util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,14 +19,12 @@ public class SousuocategoryDao {
             Connection conn=null;
             Statement state=null;
             ResultSet rs=null;
-            Class.forName("com.mysql.jdbc.Driver");
-            String jdbc="jdbc:mysql://127.0.0.1:3306/onlineshop?characterEncoding=UTF-8&serverTimezone=UTC";
-            conn= DriverManager.getConnection(jdbc, "root", "1234");
+            conn = DBUtil.getConnection();
             state =conn.createStatement();
             String sql="select * from goods";
             rs=state.executeQuery(sql);
             while(rs.next()){
-                if((rs.getString(3).indexOf(leibie)!=-1||rs.getString(4).indexOf(leibie)!=-1)) {
+                if((rs.getString("GCategoryone").indexOf(leibie)!=-1||rs.getString("GCategorytwo").indexOf(leibie)!=-1)) {
                     Goods g1 = new Goods();
                     g1.setGId(rs.getInt(1));
                     g1.setGName(rs.getString(2));

@@ -8,6 +8,7 @@
   </head>
   
   <body >
+  <%session.invalidate();%>
     <font color=green size=5xp>ÃÜÂëÐÞ¸Ä³É¹¦!</font>
     
     <script type="text/javascript">

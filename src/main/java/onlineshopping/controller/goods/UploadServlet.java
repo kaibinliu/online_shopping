@@ -1,7 +1,7 @@
 package onlineshopping.controller.goods;
 
 import onlineshopping.model.Goods;
-import onlineshopping.model.goodsDao.GoodDao;
+import onlineshopping.model.goodsDao.GoodsDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -51,13 +51,13 @@ public class UploadServlet extends HttpServlet {
             good.setGCategorytwo(request.getParameter("categorytwo"));
             good.setGStock(Integer.parseInt(request.getParameter("stock")));
             good.setGPrice(Double.parseDouble(request.getParameter("sprice")));
-            GoodDao gd=new GoodDao();
+            GoodsDao gd=new GoodsDao();
             gd.release(good);
         } catch (Exception e) {
             request.getRequestDispatcher("jsp/goods/Release.jsp").forward(request, response);
             e.printStackTrace();
         }
-        response.sendRedirect("jsp/goods/Show.jsp");
+        response.sendRedirect("jsp/goods/GoodsManage.jsp");
     }
 
     @Override

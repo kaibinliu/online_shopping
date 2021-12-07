@@ -1,5 +1,5 @@
 <%@page import="onlineshopping.model.Seller"%>
-<%@page import="onlineshopping.model.goodsDao.GoodDao"%>
+<%@page import="onlineshopping.model.goodsDao.GoodsDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
 		response.sendRedirect("../seller/SellerLogin.jsp");
 	}else{
 %>
-<%GoodDao gd=new GoodDao();
+<%
+    GoodsDao gd=new GoodsDao();
 %>
     <h1>商品信息注册</h1><!--商家注册商品信息-->
     <div class="haomaTitle" id="hmtitle">

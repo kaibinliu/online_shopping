@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class GoodDao {
+public class GoodsDao {
 	
 	public void release(Goods good) throws SQLException {
 		Connection conn=null;
@@ -167,6 +167,40 @@ public class GoodDao {
 			rs.next();
 			String describe = rs.getString("GDescribe");
 			return describe;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}finally {
+			if(null!=rs)
+				rs.close();
+			if(null!=ps)
+				ps.close();
+			if(null!=con)
+				con.close();
+		}
+		return null;
+	}
+	public Goods ShowGoodsById(int id) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			con = DBUtil.getConnection();
+			String sql = "select * from goods where GId=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs=ps.executeQuery();
+			rs.next();
+			Goods g1=new Goods();
+			g1.setGId(rs.getInt(1));
+			g1.setGName(rs.getString(2));
+			g1.setGCategoryone(rs.getString(3));
+			g1.setGCategorytwo(rs.getString(4));
+			g1.setGPrice(Double.parseDouble(rs.getString(5)));
+			g1.setGPicture(rs.getString(6));
+			g1.setGDescribe(rs.getString(7));
+			g1.setGStock(rs.getInt(8));
+			return g1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e);

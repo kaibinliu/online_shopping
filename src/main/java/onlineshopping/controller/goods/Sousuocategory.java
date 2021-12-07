@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "Sousuocategory", value = "/Sousuocategory")
 public class Sousuocategory extends HttpServlet {
@@ -20,7 +21,13 @@ public class Sousuocategory extends HttpServlet {
         Repository repo= SousuocategoryDao.sousuoleibie(leibie);
         request.setAttribute("repo",repo);
         request.getSession(true).setAttribute("repo",repo);
-        response.sendRedirect("goodlist_sousuo.jsp");
+        HttpSession session = request.getSession();
+        if(null!=session.getAttribute("buyer") && null==session.getAttribute("seller")){
+            response.sendRedirect("jsp/goods/goodslist_sousuo.jsp");
+        }else if(null==session.getAttribute("buyer") && null!=session.getAttribute("seller")){
+            response.sendRedirect("jsp/goods/GoodsManage_FilterAndSearchResult.jsp");
+        }
+
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

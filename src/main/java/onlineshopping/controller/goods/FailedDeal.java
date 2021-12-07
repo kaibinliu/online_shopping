@@ -1,6 +1,6 @@
 package onlineshopping.controller.goods;
 
-import onlineshopping.model.goodsDao.GoodDao;
+import onlineshopping.model.goodsDao.GoodsDao;
 import onlineshopping.model.purchaseDao.PurchaseDao;
 
 import javax.servlet.ServletException;
@@ -29,7 +29,7 @@ public class FailedDeal extends HttpServlet {
         int BId=Integer.parseInt(request.getParameter("BId"));
         int PCount=Integer.parseInt(request.getParameter("PCount"));
         PurchaseDao pd=new PurchaseDao();
-        GoodDao gd=new GoodDao();
+        GoodsDao gd=new GoodsDao();
         try {
             pd.stateChange("交易失败",BId,GId);
             gd.addStock(GId,PCount);

@@ -71,7 +71,7 @@
                 <td class="tip">操作：</td><td><button onclick="success(<%=p.getGId()%>,<%=p.getBId()%>)">交易成功</button></td><td><button onclick="fail(<%=p.getGId()%>,<%=p.getBId()%>,<%=p.getPCount()%>)">交易失败</button></td>
             </tr>
         </table><br/><br/><%} %>
-        <a href="../goods/Show.jsp">返回</a><br/>
+        <a href="#" onclick="history.back()">返回上一级页面</a><br/>
 <%}else {%>
 <h1>暂无意向购买人信息！</h1><br/>
 <a href="../goods/Show.jsp">返回</a><br/>

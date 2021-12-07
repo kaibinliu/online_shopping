@@ -16,7 +16,7 @@
     <title>Title</title>
     <style>
         img{
-            width: 200px;
+            width: 500px;
             height: 300px;
         }
 
@@ -24,8 +24,8 @@
 </head>
 <body>
 <header>
-    <a href="goodlist.jsp">返回</a>
-    商品详情
+    <a href="goodslist.jsp">返回商品浏览界面</a>
+    <a href="#" onclick="history.back()">返回上一级页面</a>
 </header>
 <%
     Repository repo=(Repository)session.getAttribute("repo");
@@ -36,18 +36,24 @@
         g1=giter.next();
         
 %>
+<div style="border: orange 2px solid">
+        <h2>商品详情</h2>
         <div id="imgBox">
             <img src="<%=g1.getGPicture().split(";")[0]%>">
         </div>
         商品名称:<p> <%=g1.getGName() %></p>
         价格:<%=g1.getGPrice() %>
         库存:<%=g1.getGStock() %>
-        <form action="userinformation.jsp" method="post">
+        <p>商品描述详情:<a href="../../GoodsDescribeServlet?id=<%= g1.getGId()%>">点击查看</a></p>
+        <%if(null!=session.getAttribute("buyer")){%>
+        <form action="../buyer/userinformation.jsp" method="post">
             <input style="float: right;"type="submit" value="购买"  >
             <input type="hidden" name="id" value=<%=g1.getGId()%>>
         </form>
+        <%}else{%><p>要登录后才能购买噢>_<</p><%}%>
 <%
     }
 %>
+</div>
 </body>
 </html>

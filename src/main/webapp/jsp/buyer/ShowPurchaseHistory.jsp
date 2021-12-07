@@ -32,7 +32,7 @@
         <%
         int id=Integer.parseInt(request.getParameter("id"));
         if(id==0)
-        	response.sendRedirect("../goods/Show.jsp");
+        	response.sendRedirect("../goods/GoodsManage.jsp");
         PurchaseDao pd=new PurchaseDao();
 		ArrayList<Purchase> pl=pd.readHistory(id);
 		if(pl.isEmpty()==false){
@@ -64,10 +64,10 @@
             <td class="tip">订单状态：</td><td> <%=p.getPState() %></td>
         </tr>
     </table><br/><br/><%} %>
-    <a href="ShowBuyerInfo.jsp">返回</a><br/>
+    <a href="#" onclick="history.back()">返回</a><br/>
         <%}else {%>
     <h1>该用户暂无购买历史！</h1><br/>
-    <a href="ShowBuyerInfo.jsp">返回</a><br/>
+    <a href="#" onclick="history.back()">返回</a><br/>
         <%}} %>
 </body>
 </html>

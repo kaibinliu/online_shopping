@@ -55,10 +55,10 @@
     </tr>
     <%} %>
 </table><hr/>
-<a href="../goods/Show.jsp">返回</a><br/>
+<a href="#" onclick="history.back()">返回</a><br/>
 <%}else {%>
 <h1>暂无注册用户！</h1><br/>
-<a href="../goods/Show.jsp">返回</a><br/>
+<a href="#" onclick="history.back()">返回</a><br/>
 <%}} %>
 </body>
 </html>

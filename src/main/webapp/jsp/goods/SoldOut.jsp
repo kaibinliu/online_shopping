@@ -1,7 +1,7 @@
 <%@page import="onlineshopping.model.Seller"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="onlineshopping.model.goodsDao.GoodDao"%>
+<%@page import="onlineshopping.model.goodsDao.GoodsDao"%>
 <%@page import="onlineshopping.model.Goods"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -43,7 +43,7 @@
     </div>
 		<%
 		request.setCharacterEncoding("utf-8");
-		GoodDao gd=new GoodDao();
+		GoodsDao gd=new GoodsDao();
 		ArrayList<Goods> gl=gd.showSoldOut();
 		if(gl.isEmpty()==false){
 		String[] ima;
@@ -68,10 +68,10 @@
                 <td class="tip">操作：</td><td width=400> <button onclick="stockChange(<%=good.getGId()%>)">补充库存</button> </td>
             </tr>
         </table><br/><br/><hr/><%} %>
-        <a href="Show.jsp">返回</a><br/>
+        <a href="#" onclick="history.back()">返回</a><br/>
 <%}else {%>
 <h1>不存在已售出商品！</h1><br/>
-<a href="Show.jsp">返回</a><br/>
+<a href="#" onclick="history.back()">返回</a><br/>
 <%}} %>
 </body>
 </html>

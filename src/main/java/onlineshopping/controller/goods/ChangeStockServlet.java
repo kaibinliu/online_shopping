@@ -1,6 +1,6 @@
 package onlineshopping.controller.goods;
 
-import onlineshopping.model.goodsDao.GoodDao;
+import onlineshopping.model.goodsDao.GoodsDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +26,7 @@ public class ChangeStockServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         int id=Integer.parseInt(request.getParameter("id"));
         int num=Integer.parseInt(request.getParameter("num"));
-        GoodDao gd=new GoodDao();
+        GoodsDao gd=new GoodsDao();
         try {
             gd.changeStock(id, num);;
         } catch (SQLException e) {

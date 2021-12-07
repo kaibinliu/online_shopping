@@ -1,6 +1,6 @@
 package onlineshopping.controller.goods;
 
-import onlineshopping.model.goodsDao.GoodDao;
+import onlineshopping.model.goodsDao.GoodsDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ public class GoodsDescribeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id=Integer.parseInt(request.getParameter("id"));
         try {
-            String describe = new GoodDao().showDescribe(id);
+            String describe = new GoodsDao().showDescribe(id);
             request.setAttribute("describe",describe);
             RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/goods/goodsdescribe.jsp");
             dispatcher.forward(request,response);

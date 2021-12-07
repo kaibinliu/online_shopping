@@ -1,5 +1,6 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@ page import="onlineshopping.model.Buyer" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +10,14 @@
     <title>Insert title here</title>
 </head>
 <body>
+<%
+    Buyer buyer = (Buyer)session.getAttribute("buyer");
+    if(null==buyer){
+%>
+<h1>请先登录</h1><a href="BuyerLogin.jsp">点击登录</a>
+<%
+}else{
+%>
 <div style="height: 12cm; background-color: skyblue;margin-left: auto;margin-right: auto; width: 8cm ;text-align: center">
     <p>用户信息填写</p> <br>
     <%  int id= Integer.parseInt(request.getParameter("id"));%>
@@ -26,5 +35,7 @@
 
 </form>
 </div>
+<% }
+%>
 </body>
 </html>

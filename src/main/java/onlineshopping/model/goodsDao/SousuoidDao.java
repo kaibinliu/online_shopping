@@ -2,6 +2,7 @@ package onlineshopping.model.goodsDao;
 
 import onlineshopping.model.Goods;
 import onlineshopping.model.Repository;
+import onlineshopping.model.Util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,9 +19,7 @@ public class SousuoidDao {
             Connection conn=null;
             Statement state=null;
             ResultSet rs=null;
-            Class.forName("com.mysql.jdbc.Driver");
-            String jdbc="jdbc:mysql://127.0.0.1:3306/onlineshop?characterEncoding=UTF-8&serverTimezone=UTC";
-            conn= DriverManager.getConnection(jdbc, "root", "1234");
+            conn = DBUtil.getConnection();
             state =conn.createStatement();
             String sql="select * from goods";
             rs=state.executeQuery(sql);

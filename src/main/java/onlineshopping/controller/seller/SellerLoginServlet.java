@@ -40,7 +40,7 @@ public class SellerLoginServlet extends HttpServlet {
         if(a) {
             HttpSession session = request.getSession(true);
             session.setAttribute("seller", seller);
-            response.sendRedirect("jsp/goods/Show.jsp");
+            response.sendRedirect("jsp/goods/GoodsManage.jsp");
         }else {
             response.sendRedirect("jsp/seller/SellerLogin_fail.jsp");
         }

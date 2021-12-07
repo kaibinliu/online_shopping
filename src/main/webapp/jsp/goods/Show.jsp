@@ -1,5 +1,5 @@
 <%@page import="onlineshopping.model.Seller"%>
-<%@page import="onlineshopping.model.goodsDao.GoodDao"%>
+<%@page import="onlineshopping.model.goodsDao.GoodsDao"%>
 <%@page import="onlineshopping.model.Goods"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -36,6 +36,7 @@
 	}else{
 %>
 <p style="text-align:right;">
+    <a href="#" onclick="history.back()">返回上一页</a>
     <a href="Release.jsp">发布商品</a>
     <a href="../buyer/ShowBuyerInfo.jsp">查看注册用户信息</a>
     <a href="SoldOut.jsp">查看历史商品</a>
@@ -46,12 +47,10 @@
     <h1 align="center">商品信息管理</h1><!--商家管理商品信息-->
 <%
     request.setCharacterEncoding("utf-8");
-    GoodDao gd=new GoodDao();
-    ArrayList<Goods> gl=gd.showGoods();
-    if(gl.isEmpty()==false){
-        String[] ima;
-        for(Goods good:gl) {
-            ima=good.getGPicture().split(";");
+    GoodsDao gd=new GoodsDao();
+    int id = Integer.parseInt(request.getParameter("id"));
+    Goods good = gd.ShowGoodsById(id);
+    String[] ima = good.getGPicture().split(";");
 %>
     
 		<table align="center">
@@ -79,8 +78,7 @@
                 <td class="tip">操作：</td><td width=400> <button onclick="stockChange(<%=good.getGId()%>)">修改库存</button> </td>
             </tr>
         </table><br/><br/><hr/>
-<%}}else {%>
-<h1>商品已售空！</h1>
-<%}} %>
+<%}%>
+
 </body>
 </html>
