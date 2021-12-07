@@ -1,9 +1,9 @@
 package onlineshopping.model.goodsDao;
 
 
-import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Goods;
 import onlineshopping.model.Repository;
+import onlineshopping.model.Util.DBUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

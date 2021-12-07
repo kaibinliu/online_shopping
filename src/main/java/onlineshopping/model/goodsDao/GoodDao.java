@@ -1,10 +1,12 @@
 package onlineshopping.model.goodsDao;
 
-import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Goods;
+import onlineshopping.model.Util.DBUtil;
 
-import javax.naming.NamingException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GoodDao {

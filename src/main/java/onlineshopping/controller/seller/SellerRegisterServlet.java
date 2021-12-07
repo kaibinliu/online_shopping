@@ -2,14 +2,14 @@ package onlineshopping.controller.seller;
 
 
 import onlineshopping.model.Seller;
-import onlineshopping.model.Util.PasswordUtil;
 import onlineshopping.model.sellerDao.SellerRegisterDao;
-import org.apache.tomcat.util.codec.binary.Base64;
-import sun.security.util.Password;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "SellerRegisterServlet", value = "/SellerRegisterServlet")

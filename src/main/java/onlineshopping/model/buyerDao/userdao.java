@@ -1,10 +1,13 @@
 package onlineshopping.model.buyerDao;
 
 import onlineshopping.model.Buyer;
-import onlineshopping.model.Util.DBUtil;
 import onlineshopping.model.Purchaser;
+import onlineshopping.model.Util.DBUtil;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
