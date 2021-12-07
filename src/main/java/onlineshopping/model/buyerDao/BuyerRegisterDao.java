@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BuyerRegisterDao {
-	String url = "jdbc:mysql://127.0.0.1:3306/onlinesp?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
+	String url = "jdbc:mysql://127.0.0.1:3306/onlineshop?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
 	String username="root";
-	String password="001124";
+	String password="1234";
 	
 	public boolean register(Buyer buyer) {
 		try {  Class.forName("com.mysql.cj.jdbc.Driver");

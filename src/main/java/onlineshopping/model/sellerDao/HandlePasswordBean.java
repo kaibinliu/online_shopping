@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class HandlePasswordBean{
-	 String uri="jdbc:mysql://127.0.0.1:3306/onlinesp?"+"user=root&password=001124&characterEncoding=UTF-8";
+	 String uri="jdbc:mysql://127.0.0.1:3306/onlineshop?"+"user=root&password=1234&characterEncoding=UTF-8";
 	 public boolean change(SetPassword set) {
 		  try {  Class.forName("com.mysql.jdbc.Driver");
 	      }

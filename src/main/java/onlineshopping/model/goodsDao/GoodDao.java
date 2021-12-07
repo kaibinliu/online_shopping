@@ -6,9 +6,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class GoodDao {
-	public static final String URL="jdbc:mysql://localhost:3306/onlinesp?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
+	public static final String URL="jdbc:mysql://localhost:3306/onlineshop?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 	public static final String USER="root";
-	public static final String PWD="001124";
+	public static final String PWD="1234";
 	
 	public void release(Goods good) throws SQLException {
 		Connection conn=null;

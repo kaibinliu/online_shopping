@@ -9,12 +9,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class SousuoDao {
+public class SousuocategoryDao {
     static Repository repo= new Repository();
 
-    public static Repository sousuo(String ss){
+    public static Repository sousuoleibie(String leibie){
         try {
-
             ArrayList<Goods> goodlist =new ArrayList<Goods>();
             Connection conn=null;
             Statement state=null;
@@ -25,8 +24,8 @@ public class SousuoDao {
             state =conn.createStatement();
             String sql="select * from goods";
             rs=state.executeQuery(sql);
-            while(rs.next()) {
-                if (rs.getString(2).indexOf(ss)!=-1) {
+            while(rs.next()){
+                if((rs.getString(3).indexOf(leibie)!=-1||rs.getString(4).indexOf(leibie)!=-1)) {
                     Goods g1 = new Goods();
                     g1.setGId(rs.getInt(1));
                     g1.setGName(rs.getString(2));

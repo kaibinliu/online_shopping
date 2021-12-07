@@ -38,7 +38,7 @@ public class BuyerLoginServlet extends HttpServlet {
         if(a) {
             HttpSession session = request.getSession(true);
             session.setAttribute("seller", buyer);
-            RequestDispatcher dispatcher=request.getRequestDispatcher("Show.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("goodlist.jsp");
             dispatcher.forward(request,response);
         }else {
             RequestDispatcher dispatcher=request.getRequestDispatcher("BuyerLogin_fail.jsp");
