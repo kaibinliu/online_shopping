@@ -61,8 +61,8 @@
                 <td class="tip">商品图片：</td>
                 <td> <% if(good.getGPicture().length()!=0){
 						for(String i:ima){%>
-							<img src=<%=i%> height="200" width="400">
-						<%break;} }%></td>
+							<img src=<%=i%> height="200" width="400"><br/>
+						<%} }%></td>
             </tr>
             <tr>
                 <td class="tip">商品价格：</td><td width=400> <%=good.getGPrice() %></td>

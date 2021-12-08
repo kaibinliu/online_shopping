@@ -74,7 +74,7 @@
         <a href="#" onclick="history.back()">返回上一级页面</a><br/>
 <%}else {%>
 <h1>暂无意向购买人信息！</h1><br/>
-<a href="../goods/Show.jsp">返回</a><br/>
+<a href="#" onclick="history.back()">返回</a><br/>
 <%}} %>
 </body>
 </html>
