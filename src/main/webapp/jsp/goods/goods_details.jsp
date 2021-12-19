@@ -14,6 +14,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../../css/goods/goodsdetials.css">
     <style>
         img{
             width: 500px;
@@ -21,6 +22,7 @@
         }
 
     </style>
+    <script src="../../js/goods/GoodsDetails.js"></script>
 </head>
 <body>
 <header>
@@ -38,8 +40,27 @@
 %>
 <div style="border: orange 2px solid">
         <h2>商品详情</h2>
-        <div id="imgBox">
-            <img src="<%=g1.getGPicture().split(";")[0]%>">
+        <div class="box">
+            <div class="box-1">
+                <ul>
+
+                    <%String[] ls = g1.getGPicture().split(";");
+                        for(int i=0;i<ls.length;i++){%>
+                    <li><img src="<%=ls[i]%>"></li>
+                    <%}%>
+
+                </ul>
+                <img src="<%=g1.getGPicture().split(";")[0]%>">
+            </div>
+            <div class="box-2">
+                <ul>
+
+                </ul>
+            </div>
+            <div class="box-3">
+                <span class="prev"> < </span>
+                <span class="next"> > </span>
+            </div>
         </div>
         商品名称:<p> <%=g1.getGName() %></p>
         价格:<%=g1.getGPrice() %>

@@ -1,0 +1,38 @@
+/* 轮播图开始 */
+.box a {text-decoration: none;color: rgb(200, 200, 200);}
+.box{width: 520px;height: 280px;margin: 0px auto;overflow: hidden;position: relative;}
+/* .box-1 ul{} */
+.box-1 ul li{width:520px;height: 280px;position: relative;overflow: hidden;}
+.box-1 ul li img{display:block;width:520px; height: 280px;
+    border-radius: 12px;}
+
+.box-2{position: absolute;right: 10px;bottom: 14px;}
+.box-2 ul li{float:left;width: 12px;height: 12px;overflow: hidden; margin: 0 5px; border-radius: 50%;
+    background: rgba(0,0,0,0.5);text-indent: 100px;cursor: pointer;}
+.box-2 ul .on{background: rgba(255, 80, 0);}
+.box-3 span{
+    display: none;
+    position: absolute;
+    color: white;
+    background: rgba(0,0,0,.5);
+    width: 40px;height: 40px;
+    top:50%;
+    font-family: "宋体";
+    line-height: 40px;
+    font-size:18px;
+    margin-top: -40px;
+    text-align: center;
+    cursor: pointer;}
+.box-3 .prev{left: 0px;}
+.box-3 .next{right: 0px;}
+.box-3 span::selection{
+    background: transparent;
+}
+.box-3 span:hover{background: rgba(125,125,125,.8);}
+.box:hover .box-3 span{
+    display: block;
+}
+
+
+
+/* 轮播图结束 */
