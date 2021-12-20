@@ -9,7 +9,7 @@
 <body>
 <%
 session.invalidate();
-response.sendRedirect("SellerLogin.jsp");
+response.sendRedirect("../goods/goodslist.jsp");
 %>
 </body>
 </html>

@@ -50,7 +50,6 @@
                     <%}%>
 
                 </ul>
-                <img src="<%=g1.getGPicture().split(";")[0]%>">
             </div>
             <div class="box-2">
                 <ul>

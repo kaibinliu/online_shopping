@@ -131,7 +131,7 @@
                             <div class="search-input-box">
 
                                     <input type="text" name="ss" placeholder="请输入...">
-                                    <input type="submit" value="  ">
+                                    <input type="submit" value="搜索">
 
                             </div>
                         </div>

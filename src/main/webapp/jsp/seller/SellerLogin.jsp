@@ -27,6 +27,6 @@
             </tr>
         </table>
     </form>
-    <a href="SellerRegister.jsp">商家注册</a>&nbsp;<a href="../../index.jsp">返回首页</a>
+    <a href="SellerRegister.jsp">商家注册</a>&nbsp;<a href="../goods/goodslist.jsp">返回首页</a>
 </body>
 </html>

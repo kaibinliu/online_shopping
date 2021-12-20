@@ -15,6 +15,8 @@
     <meta name="keywords" content="商品信息管理"/>
     <meta name="description" content="管理"/>
     <link href="../../css/goods/goods.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../css/goods/Show.css">
+    <script src="../../js/goods/Show.js"></script>
     <script language="javascript">
         function stockChange(id){
             var num= prompt("修改库存");
@@ -59,10 +61,29 @@
             </tr>
             <tr>
                 <td class="tip">商品图片：</td>
-                <td> <% if(good.getGPicture().length()!=0){
-						for(String i:ima){%>
-							<img src=<%=i%> height="200" width="400"><br/>
-						<%} }%></td>
+                <td>
+                    <div class="box">
+                        <div class="box-1">
+                            <ul>
+
+                                <%
+                                    for(int i=0;i<ima.length;i++){%>
+                                <li><img src="<%=ima[i]%>"></li>
+                                <%}%>
+
+                            </ul>
+                        </div>
+                        <div class="box-2">
+                            <ul>
+
+                            </ul>
+                        </div>
+                        <div class="box-3">
+                            <span class="prev"> < </span>
+                            <span class="next"> > </span>
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td class="tip">商品价格：</td><td width=400> <%=good.getGPrice() %></td>
