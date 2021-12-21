@@ -7,6 +7,10 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="D:/学习资料/软件工程实践/学期总项目/最终答辩/API接口文档" />
+    <option name="OTHER_OPTIONS" value="-encoding utf-8 -charset utf-8" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

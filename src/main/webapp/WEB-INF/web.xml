@@ -3,4 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0" metadata-complete="false"><!--metadata-complete="false"表示扫描雷定义注释,不写默认是false-->
+    <welcome-file-list>
+        <welcome-file>jsp/goods/goodslist.jsp</welcome-file>
+    </welcome-file-list>
+
 </web-app>

@@ -33,7 +33,7 @@ public class ChangeStockServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        response.sendRedirect("jsp/goods/Show.jsp");
+        response.sendRedirect("jsp/goods/GoodsManage.jsp");
     }
 
     @Override

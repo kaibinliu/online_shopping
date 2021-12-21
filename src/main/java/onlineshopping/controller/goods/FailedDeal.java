@@ -37,7 +37,7 @@ public class FailedDeal extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        response.sendRedirect("Purchase.jsp?id="+GId);
+        response.sendRedirect("jsp/purchase/Purchase.jsp?id="+GId);
     }
 
     @Override
