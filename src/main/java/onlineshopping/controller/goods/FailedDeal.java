@@ -1,10 +1,13 @@
 package onlineshopping.controller.goods;
 
-import onlineshopping.model.goodsDao.GoodDao;
+import onlineshopping.model.goodsDao.GoodsDao;
+import onlineshopping.model.purchaseDao.PurchaseDao;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -22,15 +25,19 @@ public class FailedDeal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        int id=Integer.parseInt(request.getParameter("id"));
-        GoodDao gd=new GoodDao();
+        int GId=Integer.parseInt(request.getParameter("GId"));
+        int BId=Integer.parseInt(request.getParameter("BId"));
+        int PCount=Integer.parseInt(request.getParameter("PCount"));
+        PurchaseDao pd=new PurchaseDao();
+        GoodsDao gd=new GoodsDao();
         try {
-            gd.stateChange("销售中", id);;
+            pd.stateChange("交易失败",BId,GId);
+            gd.addStock(GId,PCount);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        response.sendRedirect("Show.jsp");
+        response.sendRedirect("jsp/purchase/Purchase.jsp?id="+GId);
     }
 
     @Override

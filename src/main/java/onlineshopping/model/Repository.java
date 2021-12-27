@@ -3,23 +3,23 @@ package onlineshopping.model;
 import java.util.ArrayList;
 
 public class Repository {
-     private ArrayList<Good1> repo ;
+     private ArrayList<Goods> repo ;
 
 	public Repository() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Repository(ArrayList<Good1> repo) {
+	public Repository(ArrayList<Goods> repo) {
 		super();
 		this.repo = repo;
 	}
 
-	public ArrayList<Good1> getRepo() {
+	public ArrayList<Goods> getRepo() {
 		return repo;
 	}
 
-	public void setRepo(ArrayList<Good1> repo) {
+	public void setRepo(ArrayList<Goods> repo) {
 		this.repo = repo;
 	}
 

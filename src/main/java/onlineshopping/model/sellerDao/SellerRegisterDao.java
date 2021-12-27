@@ -1,24 +1,25 @@
 package onlineshopping.model.sellerDao;
 
 import onlineshopping.model.Seller;
+import onlineshopping.model.Util.DBUtil;
+import onlineshopping.model.Util.PasswordUtil;
+import org.apache.tomcat.util.codec.binary.Base64;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class SellerRegisterDao {
-	String url = "jdbc:mysql://127.0.0.1:3306/onlineshopping?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
-	String username="root";
-	String password="001124";
-	
+
 	public boolean register(Seller seller) {
-		try {  Class.forName("com.mysql.cj.jdbc.Driver");
-	      }
-	      catch(Exception e){}
+		Connection con = null;
 		try {
-			Connection con = DriverManager.getConnection(url,username,password);
-			String insertSQL = "insert into seller values(?,?)";
+			con = DBUtil.getConnection();
+			seller.setSPassword(Base64.encodeBase64String(PasswordUtil.encrypt(seller.getSPassword(),"12345678")));
+			String insertSQL = "insert into seller(SUsername,SPassword) values(?,?)";
 			String querySQL = "select * from seller where SUsername=?";
 			PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pre.setString(1, seller.getUname());
+			pre.setString(1, seller.getSUsername());
 			ResultSet rs = pre.executeQuery();
 			rs.last();
 			int n = rs.getRow();
@@ -27,13 +28,13 @@ public class SellerRegisterDao {
 				return false;
 			}else {
 				pre = con.prepareStatement(insertSQL);
-				pre.setString(1, seller.getUname());
-				pre.setString(2, seller.getPwd());
+				pre.setString(1, seller.getSUsername());
+				pre.setString(2, seller.getSPassword());
 				int ok = pre.executeUpdate();
 				con.close();
 				return true;
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;

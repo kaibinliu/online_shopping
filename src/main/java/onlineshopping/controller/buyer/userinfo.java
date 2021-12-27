@@ -1,11 +1,14 @@
 package onlineshopping.controller.buyer;
 
 import onlineshopping.model.Purchaser;
+import onlineshopping.model.buyerDao.pddao;
 import onlineshopping.model.buyerDao.userdao;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "userinfo", value = "/userinfo")
@@ -17,17 +20,25 @@ public class userinfo extends HttpServlet {
         Purchaser u=new Purchaser();
         String name=request.getParameter("buyername");
         String phone=request.getParameter("buyerphone");
+        String address=request.getParameter("location");
+        String count=request.getParameter("purchasequantity");
         u.setName(name);
         u.setPhone(phone);
         u.setId(id);
-        userdao.login(u);
-        if(name!=null&&phone!=null)
+        u.setAddress(address);
+        u.setCount(count);
+        if(name!=null&&phone!=null&&address!=null&&pddao.pandaun(u)==0)
         {
-            response.sendRedirect("success.jsp");
+            userdao.login(u);
+            response.sendRedirect("jsp/purchase/success.jsp");
         }
-        else {
-            response.sendRedirect("fail.jsp");
+        else if(name==null||phone==null||address==null||count==null){
+            response.sendRedirect("jsp/purchase/fail.jsp");
         }
+        else if(pddao.pandaun(u)==1){
+            response.sendRedirect("jsp/purchase/account_wrong.jsp");
+        }
+
     }
 
     @Override

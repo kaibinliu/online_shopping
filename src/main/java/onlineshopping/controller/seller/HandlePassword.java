@@ -1,11 +1,17 @@
 package onlineshopping.controller.seller;
 
+import onlineshopping.model.Seller;
+import onlineshopping.model.SetPassword;
 import onlineshopping.model.sellerDao.HandlePasswordBean;
-import onlineshopping.model.sellerDao.SetPassword;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "HandlePassword", value = "/HandlePassword")
@@ -33,14 +39,16 @@ public class HandlePassword extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String password = request.getParameter("password").trim();
         String again_password=request.getParameter("again_password").trim();
-        SetPassword set = new SetPassword(password, again_password);
+        HttpSession session = request.getSession(true);
+        Seller seller = (Seller)session.getAttribute("seller");
+        String username = seller.getSUsername();
+        SetPassword set = new SetPassword(username,password, again_password);
         HandlePasswordBean hp=new HandlePasswordBean();
 
-        HttpSession session=request.getSession(true);
 
         //传入参数
         if(!password.equals(again_password)){
-            RequestDispatcher dispatcher=request.getRequestDispatcher("change_fail.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("jsp/seller/change_fail.jsp");
             dispatcher.forward(request,response);
             return;
         }
@@ -49,13 +57,13 @@ public class HandlePassword extends HttpServlet {
 
         if(password.equals(again_password)){
             boolean a = hp.change(set);
-            RequestDispatcher dispatcher=request.getRequestDispatcher("change_sucess.jsp");//转发
+            RequestDispatcher dispatcher=request.getRequestDispatcher("jsp/seller/change_sucess.jsp");//转发
             dispatcher.forward(request,response);
         }
 
         else{
 
-            RequestDispatcher dispatcher=request.getRequestDispatcher("change_fail.jsp");
+            RequestDispatcher dispatcher=request.getRequestDispatcher("jsp/seller/change_fail.jsp");
             dispatcher.forward(request,response);
 
             return;

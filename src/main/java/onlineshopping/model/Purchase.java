@@ -5,61 +5,112 @@ import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
-
 public class Purchase {
-	private int Gno;
-	private Date PDate;
-	private String Username;
-	private String Phone;
-	public int getGno() {
-		return Gno;
-	}
-	public void setGno(int gno) {
-		Gno = gno;
-	}
-	public String getPDate() {
-		String value = null;
-		//��Date���͵�ʱ��ת����ָ����ʽ���ַ���
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		value = dateFormat.format(PDate);
-		return value;
-	}
-	public void setPDate(String pDate) {
-		//���ַ������͵�����ת����Date���͵�ָ����ʽ������
-			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			ParsePosition pos = new ParsePosition(0);//�ӵ�һ���ַ���ʼ����
-			try {
-				this.PDate = (Date) f.parse(pDate,pos);/*�Բ���msg_create_date��String���ͣ��ӵ�һ���ַ���ʼ��������pos����ת����java.util.Date���ͣ�
-			�����Date�ĸ�ʽΪ"yyyy-MM-dd"����ΪSimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");��*/
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	}
-	
-	public String getUsername() {
-		return Username;
-	}
-	public void setUsername(String username) {
-		Username = username;
-	}
-	public String getPhone() {
-		return Phone;
-	}
-	public void setPhone(String phone) {
-		Phone = phone;
-	}
-	public Purchase(int gno, Date pDate, String username, String phone) {
-		super();
-		Gno = gno;
-		PDate = pDate;
-		Username = username;
-		Phone = phone;
-	}
-	public Purchase() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+   private int BId=0;
+    private int GId;
+    private String GName;
+    private String BUsername;
+    private String BPhone;
+    private Date PDate;
+    private int PCount;
+    private String PAddress;
+    private String PState;
+
+    public Purchase(){
+    }
+
+    public Purchase(int BId, int GId, String GName, String BUsername, String BPhone, Date PDate, int PCount, String PAddress, String PState) {
+        this.BId = BId;
+        this.GId = GId;
+        this.GName = GName;
+        this.BUsername = BUsername;
+        this.BPhone = BPhone;
+        this.PDate = PDate;
+        this.PCount = PCount;
+        this.PAddress = PAddress;
+        this.PState = PState;
+    }
+
+    public String getGName() {
+        return GName;
+    }
+
+    public void setGName(String GName) {
+        this.GName = GName;
+    }
+
+    public String getBUsername() {
+        return BUsername;
+    }
+
+    public void setBUsername(String BUsername) {
+        this.BUsername = BUsername;
+    }
+
+    public int getBId() {
+        return BId;
+    }
+
+    public void setBId(int BId) {
+        this.BId = BId;
+    }
+
+    public int getGId() {
+        return GId;
+    }
+
+    public void setGId(int GId) {
+        this.GId = GId;
+    }
+
+    public String getBPhone() {
+        return BPhone;
+    }
+
+    public void setBPhone(String BPhone) {
+        this.BPhone = BPhone;
+    }
+
+    public String getPDate() {
+        String value = null;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        value = dateFormat.format(PDate);
+        return value;
+    }
+
+    public void setPDate(String PDate) {
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        ParsePosition pos = new ParsePosition(0);//�ӵ�һ���ַ���ʼ����
+        try {
+            this.PDate = (Date) f.parse(PDate,pos);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public int getPCount() {
+        return PCount;
+    }
+
+    public void setPCount(int PCount) {
+        this.PCount = PCount;
+    }
+
+    public String getPAddress() {
+        return PAddress;
+    }
+
+    public void setPAddress(String PAddress) {
+        this.PAddress = PAddress;
+    }
+
+    public String getPState() {
+        return PState;
+    }
+
+    public void setPState(String PState) {
+        this.PState = PState;
+    }
 }

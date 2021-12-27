@@ -1,32 +1,34 @@
 package onlineshopping.model.sellerDao;
 
 import onlineshopping.model.Seller;
+import onlineshopping.model.Util.DBUtil;
+import onlineshopping.model.Util.PasswordUtil;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class SellerLoginDao {
 
-	String url = "jdbc:mysql://127.0.0.1:3306/onlineshopping?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8";
-	String username="root";
-	String password="001124";
-	
 	public boolean Login(Seller seller) {
+
 		try {
-    		Class.forName("com.mysql.cj.jdbc.Driver");
-    	}catch(Exception e) {}
-		try {
-			Connection con = DriverManager.getConnection(url,username,password);
-			String querySQL = "select * from seller where SUsername=? and SPassword=?";
+			Connection con = null;
+			con = DBUtil.getConnection();
+			String querySQL = "select * from seller where SUsername=?";
 			PreparedStatement pre = con.prepareStatement(querySQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			pre.setString(1, seller.getUname());
-			pre.setString(2, seller.getPwd());
+			pre.setString(1, seller.getSUsername());
 			ResultSet rs = pre.executeQuery();
 			rs.last();
 			int n = rs.getRow();
-			if(n<=0 || seller.getUname().length()==0 || seller.getPwd().length()==0) {
+			rs.first();
+			String str1 = rs.getString(3);
+			System.out.println("读取密文为："+str1);
+			byte[] str2 = Base64.decodeBase64(str1);
+			String password = new String(PasswordUtil.decrypt(str2,"12345678"));
+			System.out.println("解密密文为："+password);
+			if(n<=0 || seller.getSUsername().length()==0 || seller.getSPassword().length()==0 || !password.equals(seller.getSPassword())) {
 				con.close();
 				return false;
 			}else {
